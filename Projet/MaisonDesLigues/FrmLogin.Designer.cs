@@ -3,14 +3,14 @@
     partial class FrmLogin
     {
         /// <summary>
-        /// Variable nécessaire au concepteur.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Nettoyage des ressources utilisées.
+        /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true si les ressources managées doivent être supprimées ; sinon, false.</param>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,94 +20,121 @@
             base.Dispose(disposing);
         }
 
-        #region Code généré par le Concepteur Windows Form
+        #region Windows Form Designer generated code
 
         /// <summary>
-        /// Méthode requise pour la prise en charge du concepteur - ne modifiez pas
-        /// le contenu de cette méthode avec l'éditeur de code.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
-            this.CmdOk = new System.Windows.Forms.Button();
-            this.TxtMdp = new System.Windows.Forms.TextBox();
-            this.LblMdp = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.TxtLogin = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.TxtLogin = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.TxtMdp = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialCheckBox1 = new MaterialSkin.Controls.MaterialCheckBox();
+            this.CmdOk = new MaterialSkin.Controls.MaterialFlatButton();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // CmdOk
-            // 
-            this.CmdOk.Location = new System.Drawing.Point(136, 83);
-            this.CmdOk.Name = "CmdOk";
-            this.CmdOk.Size = new System.Drawing.Size(86, 24);
-            this.CmdOk.TabIndex = 8;
-            this.CmdOk.Text = "Connecter";
-            this.CmdOk.Click += new System.EventHandler(this.CmdOk_Click);
-            // 
-            // TxtMdp
-            // 
-            this.TxtMdp.Location = new System.Drawing.Point(112, 56);
-            this.TxtMdp.Name = "TxtMdp";
-            this.TxtMdp.PasswordChar = '*';
-            this.TxtMdp.Size = new System.Drawing.Size(168, 20);
-            this.TxtMdp.TabIndex = 7;
-            this.TxtMdp.Text = "employemdl";
-            // 
-            // LblMdp
-            // 
-            this.LblMdp.AutoSize = true;
-            this.LblMdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblMdp.Location = new System.Drawing.Point(9, 60);
-            this.LblMdp.Name = "LblMdp";
-            this.LblMdp.Size = new System.Drawing.Size(97, 16);
-            this.LblMdp.TabIndex = 6;
-            this.LblMdp.Text = "Mot de Passe :";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(59, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 16);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Login :";
             // 
             // TxtLogin
             // 
-            this.TxtLogin.Location = new System.Drawing.Point(112, 30);
+            this.TxtLogin.Depth = 0;
+            this.TxtLogin.Hint = "Nom d\'utilisateur";
+            this.TxtLogin.Location = new System.Drawing.Point(63, 88);
+            this.TxtLogin.MouseState = MaterialSkin.MouseState.HOVER;
             this.TxtLogin.Name = "TxtLogin";
-            this.TxtLogin.Size = new System.Drawing.Size(168, 20);
-            this.TxtLogin.TabIndex = 11;
-            this.TxtLogin.Text = "employemdl";
-            this.TxtLogin.TextChanged += new System.EventHandler(this.ControleValide);
+            this.TxtLogin.PasswordChar = '\0';
+            this.TxtLogin.SelectedText = "";
+            this.TxtLogin.SelectionLength = 0;
+            this.TxtLogin.SelectionStart = 0;
+            this.TxtLogin.Size = new System.Drawing.Size(232, 23);
+            this.TxtLogin.TabIndex = 0;
+            this.TxtLogin.UseSystemPasswordChar = false;
             // 
-            // label3
+            // TxtMdp
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(92, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(202, 16);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Application Assises de l\'escrime";
+            this.TxtMdp.Depth = 0;
+            this.TxtMdp.Hint = "Mot de Passe";
+            this.TxtMdp.Location = new System.Drawing.Point(63, 151);
+            this.TxtMdp.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TxtMdp.Name = "TxtMdp";
+            this.TxtMdp.PasswordChar = '\0';
+            this.TxtMdp.SelectedText = "";
+            this.TxtMdp.SelectionLength = 0;
+            this.TxtMdp.SelectionStart = 0;
+            this.TxtMdp.Size = new System.Drawing.Size(232, 23);
+            this.TxtMdp.TabIndex = 1;
+            this.TxtMdp.UseSystemPasswordChar = true;
+            // 
+            // materialCheckBox1
+            // 
+            this.materialCheckBox1.AutoSize = true;
+            this.materialCheckBox1.Depth = 0;
+            this.materialCheckBox1.Font = new System.Drawing.Font("Roboto", 10F);
+            this.materialCheckBox1.Location = new System.Drawing.Point(63, 187);
+            this.materialCheckBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.materialCheckBox1.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.materialCheckBox1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCheckBox1.Name = "materialCheckBox1";
+            this.materialCheckBox1.Ripple = true;
+            this.materialCheckBox1.Size = new System.Drawing.Size(198, 30);
+            this.materialCheckBox1.TabIndex = 3;
+            this.materialCheckBox1.Text = "Enregistrer le mot de passe";
+            this.materialCheckBox1.UseVisualStyleBackColor = true;
+            // 
+            // CmdOk
+            // 
+            this.CmdOk.AutoSize = true;
+            this.CmdOk.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.CmdOk.Depth = 0;
+            this.CmdOk.Location = new System.Drawing.Point(180, 235);
+            this.CmdOk.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.CmdOk.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CmdOk.Name = "CmdOk";
+            this.CmdOk.Primary = false;
+            this.CmdOk.Size = new System.Drawing.Size(115, 36);
+            this.CmdOk.TabIndex = 6;
+            this.CmdOk.Text = "Identification";
+            this.CmdOk.UseVisualStyleBackColor = true;
+            this.CmdOk.Click += new System.EventHandler(this.CmdOk_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::MaisonDesLigues.Properties.Resources.Lock_32;
+            this.pictureBox3.Location = new System.Drawing.Point(12, 146);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 4;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::MaisonDesLigues.Properties.Resources.Contacts_Filled_32;
+            this.pictureBox2.Location = new System.Drawing.Point(12, 83);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox2.TabIndex = 3;
+            this.pictureBox2.TabStop = false;
             // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(370, 119);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.TxtLogin);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(316, 290);
             this.Controls.Add(this.CmdOk);
+            this.Controls.Add(this.materialCheckBox1);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.TxtMdp);
-            this.Controls.Add(this.LblMdp);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Controls.Add(this.TxtLogin);
             this.Name = "FrmLogin";
-            this.Load += new System.EventHandler(this.FrmLogin_Load);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Application Assises de l\'Escrime";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -115,11 +142,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Button CmdOk;
-        internal System.Windows.Forms.TextBox TxtMdp;
-        internal System.Windows.Forms.Label LblMdp;
-        internal System.Windows.Forms.Label label1;
-        internal System.Windows.Forms.TextBox TxtLogin;
-        internal System.Windows.Forms.Label label3;
+        private MaterialSkin.Controls.MaterialSingleLineTextField TxtLogin;
+        private MaterialSkin.Controls.MaterialSingleLineTextField TxtMdp;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private MaterialSkin.Controls.MaterialCheckBox materialCheckBox1;
+        private MaterialSkin.Controls.MaterialFlatButton CmdOk;
     }
 }

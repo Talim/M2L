@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,12 +8,9 @@ using System.Windows.Forms;
 using BaseDeDonnees;
 using System.Configuration;
 
-
-
-
 namespace MaisonDesLigues
 {
-    public partial class FrmLogin : Form
+    public partial class FrmLogin : MaterialSkin.Controls.MaterialForm
     {
 
         /// <summary>
@@ -28,7 +25,7 @@ namespace MaisonDesLigues
         internal BaseDeDonnees.Bdd UneConnexion;
         internal String TitreApplication;
         /// <summary>
-        /// gestion événement click sur le bonton ok
+        /// gestion Ã©vÃ©nement click sur le bonton ok
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -48,7 +45,7 @@ namespace MaisonDesLigues
 
         }
         /// <summary>
-        /// gestion de l'activation/désactivation du bouton ok
+        /// gestion de l'activation/dÃ©sactivation du bouton ok
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
