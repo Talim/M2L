@@ -7,20 +7,24 @@ using System.Text;
 using System.Windows.Forms;
 using BaseDeDonnees;
 using System.Configuration;
+using MaterialSkin.Controls;
+using MaterialSkin;
 
 namespace MaisonDesLigues
 {
-    public partial class FrmLogin : MaterialSkin.Controls.MaterialForm
+    public partial class FrmLogin : MaterialForm
     {
-
+        private readonly MaterialSkinManager materialSkinManager;
         /// <summary>
         /// constructeur
         /// </summary>
         public FrmLogin()
         {
             InitializeComponent();
-            TitreApplication = ConfigurationManager.AppSettings["TitreApplication"];
-            this.Text = TitreApplication;
+            materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
         }
         internal BaseDeDonnees.Bdd UneConnexion;
         internal String TitreApplication;
