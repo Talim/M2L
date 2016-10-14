@@ -10,6 +10,11 @@ namespace MaisonDesLigues
 {
     public partial class FrmPrincipale : Form
     {
+        private Bdd UneConnexion;
+        private String TitreApplication;
+        private String IdStatutSelectionne = "";
+        private Logger _logger;
+
 
         /// <summary>
         /// constructeur du formulaire
@@ -18,9 +23,8 @@ namespace MaisonDesLigues
         {
             InitializeComponent();
         }
-        private Bdd UneConnexion;
-        private String TitreApplication;
-        private String IdStatutSelectionne = "";
+
+
         /// <summary>
         /// création et ouverture d'une connexion vers la base de données sur le chargement du formulaire
         /// </summary>
@@ -31,6 +35,7 @@ namespace MaisonDesLigues
             UneConnexion = ((FrmLogin)Owner).UneConnexion;
             TitreApplication = ((FrmLogin)Owner).TitreApplication;
             this.Text = TitreApplication;
+            _logger = ((FrmLogin)Owner)._logger;
         }
         /// <summary>
         /// gestion de l'événement click du bouton quitter.

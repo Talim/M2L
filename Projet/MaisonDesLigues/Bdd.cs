@@ -14,7 +14,7 @@ using MaisonDesLigues;
 
 namespace BaseDeDonnees
 {
-    class Bdd
+    public class Bdd
     {
         //
         // propriétés membres
@@ -24,28 +24,72 @@ namespace BaseDeDonnees
         private OracleDataAdapter UnOracleDataAdapter;
         private DataTable UneDataTable;
         private OracleTransaction UneOracleTransaction;
+
+        private Logger _logger;
         //
         // méthodes
         //
         /// <summary>
-        /// constructeur de la connexion
+        /// Constructeur de la connexion
         /// </summary>
-        /// <param name="UnLogin">login utilisateur</param>
-        /// <param name="UnPwd">mot de passe utilisateur</param>
+        /// <param name="UnLogin">Login utilisateur</param>
+        /// <param name="UnPwd">Mot de passe utilisateur</param>
         public Bdd(String UnLogin, String UnPwd)
         {
+            bool essaiCnxLocal = false;
             try
             {
-                /// <remarks>on commence par récupérer dans CnString les informations contenues dans le fichier app.config
+                /// <remarks>
+                /// On commence par récupérer dans CnString les informations contenues dans le fichier app.config
                 /// pour la connectionString de nom StrConnMdl
                 /// </remarks>
+               
                 ConnectionStringSettings CnString = ConfigurationManager.ConnectionStrings["StrConnMdl"];
+                
                 ///<remarks>
-                /// on va remplacer dans la chaine de connexion les paramètres par le login et le pwd saisis
-                ///dans les zones de texte. Pour ça on va utiliser la méthode Format de la classe String.                /// 
+                /// On va remplacer dans la chaine de connexion les paramètres par le login et le pwd saisis
+                /// dans les zones de texte. Pour ça on va utiliser la méthode Format de la classe String.
+                /// 
+                /// On essaie deux types de connexion, une à distance dans un premier temps et une en local
+                /// dans un second temps.
                 /// </remarks>
-                CnOracle = new OracleConnection(string.Format(CnString.ConnectionString, UnLogin, UnPwd));
-                CnOracle.Open();
+                string cnOut = string.Format(CnString.ConnectionString.ToString(),
+                                          ConfigurationManager.AppSettings["SERVEROUT"],
+                                          ConfigurationManager.AppSettings["PORTOUT"],
+                                          ConfigurationManager.AppSettings["SID"],
+                                          UnLogin,
+                                          UnPwd);
+
+                string cnIn  = string.Format(CnString.ConnectionString.ToString(),
+                                          ConfigurationManager.AppSettings["SERVERIN"],
+                                          ConfigurationManager.AppSettings["PORTIN"],
+                                          ConfigurationManager.AppSettings["SID"], 
+                                          UnLogin, 
+                                          UnPwd);
+                try
+                {
+                    // Connexion à distance
+                    CnOracle = new OracleConnection(cnOut);
+                    CnOracle.Open();
+                    MessageBox.Show("Connexion à distance effectué avec succès !");
+                }
+                catch (OracleException Oex)
+                {
+                    MessageBox.Show(Oex.Message + "\n\n" + "L'application va essayer de se connecter en local.");
+                    essaiCnxLocal = true;
+                    // _logger.ajouterLogErr(...);
+                }
+                finally
+                {
+                    if (essaiCnxLocal)
+                    {
+                        CnOracle = new OracleConnection(cnIn);
+                        CnOracle.Open();
+                        MessageBox.Show("Connexion en local effectué avec succès !");
+                        // _logger.ajouterLog(...);
+                    }
+
+                }
             }
             catch (OracleException Oex)
             {
