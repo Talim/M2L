@@ -14,8 +14,9 @@ namespace MaisonDesLigues
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            //Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmLogin());
-        }        
+            Application.Run(new FrmAdd());
+        }
     }
 }

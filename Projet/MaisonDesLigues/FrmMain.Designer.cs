@@ -46,6 +46,7 @@
             this.materialTabSelector1.Size = new System.Drawing.Size(878, 35);
             this.materialTabSelector1.TabIndex = 0;
             this.materialTabSelector1.Text = "materialTabSelector1";
+            this.materialTabSelector1.Click += new System.EventHandler(this.materialTabSelector1_Click);
             // 
             // materialTabControl1
             // 

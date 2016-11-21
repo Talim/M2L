@@ -293,23 +293,5 @@ namespace MaisonDesLigues
         //{
 
         //}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

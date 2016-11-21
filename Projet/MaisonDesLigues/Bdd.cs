@@ -36,6 +36,7 @@ namespace BaseDeDonnees
         /// <param name="UnPwd">Mot de passe utilisateur</param>
         public Bdd(String UnLogin, String UnPwd)
         {
+            
             bool essaiCnxLocal = false;
             try
             {
@@ -53,6 +54,8 @@ namespace BaseDeDonnees
                 /// On essaie deux types de connexion, une à distance dans un premier temps et une en local
                 /// dans un second temps.
                 /// </remarks>
+                /// 
+
                 string cnOut = string.Format(CnString.ConnectionString.ToString(),
                                           ConfigurationManager.AppSettings["SERVEROUT"],
                                           ConfigurationManager.AppSettings["PORTOUT"],
@@ -66,6 +69,7 @@ namespace BaseDeDonnees
                                           ConfigurationManager.AppSettings["SID"], 
                                           UnLogin, 
                                           UnPwd);
+
                 try
                 {
                     // Connexion à distance
@@ -75,7 +79,7 @@ namespace BaseDeDonnees
                 }
                 catch (OracleException Oex)
                 {
-                    MessageBox.Show(Oex.Message + "\n\n" + "L'application va essayer de se connecter en local.");
+                    //MessageBox.Show(Oex.Message + "\n\n" + "L'application va essayer de se connecter en local.");
                     essaiCnxLocal = true;
                     // _logger.ajouterLogErr(...);
                 }
@@ -93,7 +97,8 @@ namespace BaseDeDonnees
             }
             catch (OracleException Oex)
             {
-                throw new Exception("Erreur à la connexion" + Oex.Message);
+                if(Oex.Message.Substring(0,8) == "ORA-1017")
+                    throw new Exception("Erreur à la connexion : Nom d'utilisateur ou mot de passe incorrect");
             }
         }
         /// <summary>
@@ -121,12 +126,19 @@ namespace BaseDeDonnees
         /// <returns>un objet de type datatable contenant les données récupérées</returns>
         public DataTable ObtenirDonnesOracle(String UneTableOuVue)
         {
-            string Sql = "select * from " + UneTableOuVue;
-            this.UneOracleCommand = new OracleCommand(Sql, CnOracle);
-            UnOracleDataAdapter = new OracleDataAdapter();
-            UnOracleDataAdapter.SelectCommand = this.UneOracleCommand;
-            UneDataTable = new DataTable();
-            UnOracleDataAdapter.Fill(UneDataTable);
+            try
+            {
+                string Sql = "select * from " + UneTableOuVue;
+                this.UneOracleCommand = new OracleCommand(Sql, CnOracle);
+                UnOracleDataAdapter = new OracleDataAdapter();
+                UnOracleDataAdapter.SelectCommand = this.UneOracleCommand;
+                UneDataTable = new DataTable();
+                UnOracleDataAdapter.Fill(UneDataTable);
+            }
+            catch(OracleException ex)
+            {
+                MessageBox.Show(ex.Message + " ::: " + UneTableOuVue);
+            }
             return UneDataTable;
         }
         /// <summary>

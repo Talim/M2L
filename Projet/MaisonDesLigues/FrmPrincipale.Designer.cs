@@ -394,7 +394,7 @@
             this.GrpIntervenant.Controls.Add(this.label17);
             this.GrpIntervenant.Location = new System.Drawing.Point(23, 264);
             this.GrpIntervenant.Name = "GrpIntervenant";
-            this.GrpIntervenant.Size = new System.Drawing.Size(515, 286);
+            this.GrpIntervenant.Size = new System.Drawing.Size(518, 286);
             this.GrpIntervenant.TabIndex = 25;
             this.GrpIntervenant.TabStop = false;
             this.GrpIntervenant.Text = "Complément Inscription Intervenant";
