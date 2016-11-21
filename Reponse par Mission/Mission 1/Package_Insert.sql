@@ -1,30 +1,16 @@
-PROCEDURE InsertVacation(
-
-    p_IDATELIER VACATION.IDATELIER%type,
-    p_NUMERO VACATION.NUMERO%type,
-    p_HEUREDEBUT VACATION.HEUREDEBUT%type, 
-	p_HEUREFIN VACATION.HEUREFIN%type
-)
-----------------------
-
-CREATE or REPLACE PACKAGE BODY InsertMLD as
+CREATE or REPLACE PACKAGE BODY InsertM2L as
 ----------------------
 --InsertVacation
 ----------------------
 CREATE OR REPLACE PROCEDURE InsertVacation(
+
+
     p_IDATELIER VACATION.IDATELIER%type,
     p_NUMERO VACATION.NUMERO%type,
     p_HEUREDEBUT VACATION.HEUREDEBUT%type, 
 	p_HEUREFIN VACATION.HEUREFIN%type
 )
-IS
-BEGIN
-	INSERT INTO Vacation VALUES (
-		p_IDATELIER,
-		p_NUMERO,
-		p_HEUREDEBUT,
-		p_HEUREFIN );
-END;
+
 ----------------------
 --InsertAtelier
 ----------------------
