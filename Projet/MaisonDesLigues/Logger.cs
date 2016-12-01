@@ -15,6 +15,8 @@ namespace MaisonDesLigues
     {
         private StringBuilder _out;
         private StringBuilder _err;
+        private Exception _ex;
+
 
         public Logger()
         {
@@ -40,15 +42,36 @@ namespace MaisonDesLigues
             return '[' + DateTime.Now.ToShortDateString() + " - " + DateTime.Now.ToLongTimeString() + "]  • ";
         }
 
-        public void ajouter(string log)
+        public void Ajouter(string log)
         {
             _out.AppendLine(formatLog() + log);
         }
 
-        public void ajouterErreur(string log)
+        public void AjouterErreur(string log)
         {
             _err.AppendLine(formatLog() + log);
         }
-        
+
+        public void Ajouter(Exception ex, string log)
+        {
+            _out.AppendLine(formatLog() + log);
+        }
+
+        public void AjouterErreur(Exception ex, string log)
+        {
+            _err.AppendLine(formatLog() + log);
+        }
+
+        public void Ajouter(string categorie, string log)
+        {
+            _out.AppendLine(formatLog() + "[log)");
+            
+        }
+
+        public void AjouterErreur(string categorie, string log)
+        {
+            _err.AppendLine(formatLog() + log);
+        }
+
     }
 }
