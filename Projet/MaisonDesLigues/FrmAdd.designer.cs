@@ -31,25 +31,25 @@
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialSingleLineTextField_nbPlaceAtelier = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.btn_ajouterAtelier = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialSingleLineTextField_libelle_atelier = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialSingleLineTextField_nbPlaceAtelier = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialFlatButton_AjouterTheme = new MaterialSkin.Controls.MaterialFlatButton();
+            this.comboBox_Ateliers = new System.Windows.Forms.ComboBox();
+            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.materialSingleLineTextField_LibelleTheme = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
-            this.comboBox_Ateliers = new System.Windows.Forms.ComboBox();
-            this.materialFlatButton_AjouterTheme = new MaterialSkin.Controls.MaterialFlatButton();
-            this.comboBox_Atelier_Vacations = new System.Windows.Forms.ComboBox();
-            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
-            this.maskedTextBox_HeureDebut = new System.Windows.Forms.MaskedTextBox();
-            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.materialFlatButton_AjouterVacations = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
             this.maskedTextBox_HeureFin = new System.Windows.Forms.MaskedTextBox();
-            this.materialFlatButton_AjouterVacations = new MaterialSkin.Controls.MaterialFlatButton();
+            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
+            this.maskedTextBox_HeureDebut = new System.Windows.Forms.MaskedTextBox();
+            this.comboBox_Atelier_Vacations = new System.Windows.Forms.ComboBox();
+            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.materialFlatButton_modifier = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
@@ -105,6 +105,48 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Ateliers";
             // 
+            // materialLabel2
+            // 
+            this.materialLabel2.AutoSize = true;
+            this.materialLabel2.Depth = 0;
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel2.Location = new System.Drawing.Point(11, 59);
+            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel2.Name = "materialLabel2";
+            this.materialLabel2.Size = new System.Drawing.Size(131, 19);
+            this.materialLabel2.TabIndex = 10;
+            this.materialLabel2.Text = "Nombre de place :";
+            // 
+            // materialSingleLineTextField_nbPlaceAtelier
+            // 
+            this.materialSingleLineTextField_nbPlaceAtelier.Depth = 0;
+            this.materialSingleLineTextField_nbPlaceAtelier.Hint = "";
+            this.materialSingleLineTextField_nbPlaceAtelier.Location = new System.Drawing.Point(147, 59);
+            this.materialSingleLineTextField_nbPlaceAtelier.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField_nbPlaceAtelier.Name = "materialSingleLineTextField_nbPlaceAtelier";
+            this.materialSingleLineTextField_nbPlaceAtelier.PasswordChar = '\0';
+            this.materialSingleLineTextField_nbPlaceAtelier.SelectedText = "";
+            this.materialSingleLineTextField_nbPlaceAtelier.SelectionLength = 0;
+            this.materialSingleLineTextField_nbPlaceAtelier.SelectionStart = 0;
+            this.materialSingleLineTextField_nbPlaceAtelier.Size = new System.Drawing.Size(48, 23);
+            this.materialSingleLineTextField_nbPlaceAtelier.TabIndex = 9;
+            this.materialSingleLineTextField_nbPlaceAtelier.UseSystemPasswordChar = false;
+            this.materialSingleLineTextField_nbPlaceAtelier.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.materialSingleLineTextField1_KeyPress);
+            // 
+            // materialLabel1
+            // 
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.Location = new System.Drawing.Point(11, 15);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(61, 19);
+            this.materialLabel1.TabIndex = 8;
+            this.materialLabel1.Text = "Libellé :";
+            // 
             // btn_ajouterAtelier
             // 
             this.btn_ajouterAtelier.AutoSize = true;
@@ -120,6 +162,7 @@
             this.btn_ajouterAtelier.TabIndex = 7;
             this.btn_ajouterAtelier.Text = "Ajouter";
             this.btn_ajouterAtelier.UseVisualStyleBackColor = false;
+            this.btn_ajouterAtelier.Click += new System.EventHandler(this.btn_ajouterAtelier_Click);
             // 
             // materialSingleLineTextField_libelle_atelier
             // 
@@ -152,63 +195,42 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Themes";
             // 
-            // tabPage3
+            // materialFlatButton_AjouterTheme
             // 
-            this.tabPage3.BackColor = System.Drawing.Color.White;
-            this.tabPage3.Controls.Add(this.materialFlatButton_AjouterVacations);
-            this.tabPage3.Controls.Add(this.materialLabel7);
-            this.tabPage3.Controls.Add(this.maskedTextBox_HeureFin);
-            this.tabPage3.Controls.Add(this.materialLabel6);
-            this.tabPage3.Controls.Add(this.maskedTextBox_HeureDebut);
-            this.tabPage3.Controls.Add(this.comboBox_Atelier_Vacations);
-            this.tabPage3.Controls.Add(this.materialLabel5);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(506, 133);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Vacations";
+            this.materialFlatButton_AjouterTheme.AutoSize = true;
+            this.materialFlatButton_AjouterTheme.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialFlatButton_AjouterTheme.BackColor = System.Drawing.SystemColors.Control;
+            this.materialFlatButton_AjouterTheme.Depth = 0;
+            this.materialFlatButton_AjouterTheme.Location = new System.Drawing.Point(304, 51);
+            this.materialFlatButton_AjouterTheme.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialFlatButton_AjouterTheme.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialFlatButton_AjouterTheme.Name = "materialFlatButton_AjouterTheme";
+            this.materialFlatButton_AjouterTheme.Primary = false;
+            this.materialFlatButton_AjouterTheme.Size = new System.Drawing.Size(72, 36);
+            this.materialFlatButton_AjouterTheme.TabIndex = 13;
+            this.materialFlatButton_AjouterTheme.Text = "Ajouter";
+            this.materialFlatButton_AjouterTheme.UseVisualStyleBackColor = false;
             // 
-            // materialLabel1
+            // comboBox_Ateliers
             // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(11, 15);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(61, 19);
-            this.materialLabel1.TabIndex = 8;
-            this.materialLabel1.Text = "Libellé :";
+            this.comboBox_Ateliers.FormattingEnabled = true;
+            this.comboBox_Ateliers.Location = new System.Drawing.Point(78, 60);
+            this.comboBox_Ateliers.Name = "comboBox_Ateliers";
+            this.comboBox_Ateliers.Size = new System.Drawing.Size(194, 21);
+            this.comboBox_Ateliers.TabIndex = 12;
             // 
-            // materialSingleLineTextField_nbPlaceAtelier
+            // materialLabel4
             // 
-            this.materialSingleLineTextField_nbPlaceAtelier.Depth = 0;
-            this.materialSingleLineTextField_nbPlaceAtelier.Hint = "";
-            this.materialSingleLineTextField_nbPlaceAtelier.Location = new System.Drawing.Point(147, 59);
-            this.materialSingleLineTextField_nbPlaceAtelier.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField_nbPlaceAtelier.Name = "materialSingleLineTextField_nbPlaceAtelier";
-            this.materialSingleLineTextField_nbPlaceAtelier.PasswordChar = '\0';
-            this.materialSingleLineTextField_nbPlaceAtelier.SelectedText = "";
-            this.materialSingleLineTextField_nbPlaceAtelier.SelectionLength = 0;
-            this.materialSingleLineTextField_nbPlaceAtelier.SelectionStart = 0;
-            this.materialSingleLineTextField_nbPlaceAtelier.Size = new System.Drawing.Size(48, 23);
-            this.materialSingleLineTextField_nbPlaceAtelier.TabIndex = 9;
-            this.materialSingleLineTextField_nbPlaceAtelier.UseSystemPasswordChar = false;
-            this.materialSingleLineTextField_nbPlaceAtelier.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.materialSingleLineTextField1_KeyPress);
-            // 
-            // materialLabel2
-            // 
-            this.materialLabel2.AutoSize = true;
-            this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(11, 59);
-            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(131, 19);
-            this.materialLabel2.TabIndex = 10;
-            this.materialLabel2.Text = "Nombre de place :";
+            this.materialLabel4.AutoSize = true;
+            this.materialLabel4.Depth = 0;
+            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel4.Location = new System.Drawing.Point(11, 59);
+            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel4.Name = "materialLabel4";
+            this.materialLabel4.Size = new System.Drawing.Size(61, 19);
+            this.materialLabel4.TabIndex = 11;
+            this.materialLabel4.Text = "Atelier :";
             // 
             // materialLabel3
             // 
@@ -239,86 +261,37 @@
             this.materialSingleLineTextField_LibelleTheme.TabIndex = 9;
             this.materialSingleLineTextField_LibelleTheme.UseSystemPasswordChar = false;
             // 
-            // materialLabel4
+            // tabPage3
             // 
-            this.materialLabel4.AutoSize = true;
-            this.materialLabel4.Depth = 0;
-            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(11, 59);
-            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel4.Name = "materialLabel4";
-            this.materialLabel4.Size = new System.Drawing.Size(61, 19);
-            this.materialLabel4.TabIndex = 11;
-            this.materialLabel4.Text = "Atelier :";
+            this.tabPage3.BackColor = System.Drawing.Color.White;
+            this.tabPage3.Controls.Add(this.materialFlatButton_AjouterVacations);
+            this.tabPage3.Controls.Add(this.materialLabel7);
+            this.tabPage3.Controls.Add(this.maskedTextBox_HeureFin);
+            this.tabPage3.Controls.Add(this.materialLabel6);
+            this.tabPage3.Controls.Add(this.maskedTextBox_HeureDebut);
+            this.tabPage3.Controls.Add(this.comboBox_Atelier_Vacations);
+            this.tabPage3.Controls.Add(this.materialLabel5);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(506, 133);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Vacations";
             // 
-            // comboBox_Ateliers
+            // materialFlatButton_AjouterVacations
             // 
-            this.comboBox_Ateliers.FormattingEnabled = true;
-            this.comboBox_Ateliers.Location = new System.Drawing.Point(78, 60);
-            this.comboBox_Ateliers.Name = "comboBox_Ateliers";
-            this.comboBox_Ateliers.Size = new System.Drawing.Size(194, 21);
-            this.comboBox_Ateliers.TabIndex = 12;
-            // 
-            // materialFlatButton_AjouterTheme
-            // 
-            this.materialFlatButton_AjouterTheme.AutoSize = true;
-            this.materialFlatButton_AjouterTheme.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton_AjouterTheme.BackColor = System.Drawing.SystemColors.Control;
-            this.materialFlatButton_AjouterTheme.Depth = 0;
-            this.materialFlatButton_AjouterTheme.Location = new System.Drawing.Point(304, 51);
-            this.materialFlatButton_AjouterTheme.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton_AjouterTheme.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton_AjouterTheme.Name = "materialFlatButton_AjouterTheme";
-            this.materialFlatButton_AjouterTheme.Primary = false;
-            this.materialFlatButton_AjouterTheme.Size = new System.Drawing.Size(72, 36);
-            this.materialFlatButton_AjouterTheme.TabIndex = 13;
-            this.materialFlatButton_AjouterTheme.Text = "Ajouter";
-            this.materialFlatButton_AjouterTheme.UseVisualStyleBackColor = false;
-            // 
-            // comboBox_Atelier_Vacations
-            // 
-            this.comboBox_Atelier_Vacations.FormattingEnabled = true;
-            this.comboBox_Atelier_Vacations.Location = new System.Drawing.Point(79, 14);
-            this.comboBox_Atelier_Vacations.Name = "comboBox_Atelier_Vacations";
-            this.comboBox_Atelier_Vacations.Size = new System.Drawing.Size(194, 21);
-            this.comboBox_Atelier_Vacations.TabIndex = 14;
-            // 
-            // materialLabel5
-            // 
-            this.materialLabel5.AutoSize = true;
-            this.materialLabel5.Depth = 0;
-            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel5.Location = new System.Drawing.Point(12, 13);
-            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel5.Name = "materialLabel5";
-            this.materialLabel5.Size = new System.Drawing.Size(61, 19);
-            this.materialLabel5.TabIndex = 13;
-            this.materialLabel5.Text = "Atelier :";
-            // 
-            // maskedTextBox_HeureDebut
-            // 
-            this.maskedTextBox_HeureDebut.Location = new System.Drawing.Point(116, 51);
-            this.maskedTextBox_HeureDebut.Mask = "00:00";
-            this.maskedTextBox_HeureDebut.Name = "maskedTextBox_HeureDebut";
-            this.maskedTextBox_HeureDebut.PromptChar = '0';
-            this.maskedTextBox_HeureDebut.Size = new System.Drawing.Size(52, 20);
-            this.maskedTextBox_HeureDebut.TabIndex = 15;
-            this.maskedTextBox_HeureDebut.ValidatingType = typeof(System.DateTime);
-            // 
-            // materialLabel6
-            // 
-            this.materialLabel6.AutoSize = true;
-            this.materialLabel6.Depth = 0;
-            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel6.Location = new System.Drawing.Point(12, 50);
-            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel6.Name = "materialLabel6";
-            this.materialLabel6.Size = new System.Drawing.Size(98, 19);
-            this.materialLabel6.TabIndex = 16;
-            this.materialLabel6.Text = "Heure début :";
+            this.materialFlatButton_AjouterVacations.AutoSize = true;
+            this.materialFlatButton_AjouterVacations.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialFlatButton_AjouterVacations.BackColor = System.Drawing.SystemColors.Control;
+            this.materialFlatButton_AjouterVacations.Depth = 0;
+            this.materialFlatButton_AjouterVacations.Location = new System.Drawing.Point(201, 73);
+            this.materialFlatButton_AjouterVacations.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialFlatButton_AjouterVacations.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialFlatButton_AjouterVacations.Name = "materialFlatButton_AjouterVacations";
+            this.materialFlatButton_AjouterVacations.Primary = false;
+            this.materialFlatButton_AjouterVacations.Size = new System.Drawing.Size(72, 36);
+            this.materialFlatButton_AjouterVacations.TabIndex = 19;
+            this.materialFlatButton_AjouterVacations.Text = "Ajouter";
+            this.materialFlatButton_AjouterVacations.UseVisualStyleBackColor = false;
             // 
             // materialLabel7
             // 
@@ -343,21 +316,49 @@
             this.maskedTextBox_HeureFin.TabIndex = 17;
             this.maskedTextBox_HeureFin.ValidatingType = typeof(System.DateTime);
             // 
-            // materialFlatButton_AjouterVacations
+            // materialLabel6
             // 
-            this.materialFlatButton_AjouterVacations.AutoSize = true;
-            this.materialFlatButton_AjouterVacations.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton_AjouterVacations.BackColor = System.Drawing.SystemColors.Control;
-            this.materialFlatButton_AjouterVacations.Depth = 0;
-            this.materialFlatButton_AjouterVacations.Location = new System.Drawing.Point(201, 73);
-            this.materialFlatButton_AjouterVacations.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton_AjouterVacations.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton_AjouterVacations.Name = "materialFlatButton_AjouterVacations";
-            this.materialFlatButton_AjouterVacations.Primary = false;
-            this.materialFlatButton_AjouterVacations.Size = new System.Drawing.Size(72, 36);
-            this.materialFlatButton_AjouterVacations.TabIndex = 19;
-            this.materialFlatButton_AjouterVacations.Text = "Ajouter";
-            this.materialFlatButton_AjouterVacations.UseVisualStyleBackColor = false;
+            this.materialLabel6.AutoSize = true;
+            this.materialLabel6.Depth = 0;
+            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel6.Location = new System.Drawing.Point(12, 50);
+            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel6.Name = "materialLabel6";
+            this.materialLabel6.Size = new System.Drawing.Size(98, 19);
+            this.materialLabel6.TabIndex = 16;
+            this.materialLabel6.Text = "Heure début :";
+            // 
+            // maskedTextBox_HeureDebut
+            // 
+            this.maskedTextBox_HeureDebut.Location = new System.Drawing.Point(116, 51);
+            this.maskedTextBox_HeureDebut.Mask = "00:00";
+            this.maskedTextBox_HeureDebut.Name = "maskedTextBox_HeureDebut";
+            this.maskedTextBox_HeureDebut.PromptChar = '0';
+            this.maskedTextBox_HeureDebut.Size = new System.Drawing.Size(52, 20);
+            this.maskedTextBox_HeureDebut.TabIndex = 15;
+            this.maskedTextBox_HeureDebut.ValidatingType = typeof(System.DateTime);
+            // 
+            // comboBox_Atelier_Vacations
+            // 
+            this.comboBox_Atelier_Vacations.FormattingEnabled = true;
+            this.comboBox_Atelier_Vacations.Location = new System.Drawing.Point(79, 14);
+            this.comboBox_Atelier_Vacations.Name = "comboBox_Atelier_Vacations";
+            this.comboBox_Atelier_Vacations.Size = new System.Drawing.Size(194, 21);
+            this.comboBox_Atelier_Vacations.TabIndex = 14;
+            // 
+            // materialLabel5
+            // 
+            this.materialLabel5.AutoSize = true;
+            this.materialLabel5.Depth = 0;
+            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel5.Location = new System.Drawing.Point(12, 13);
+            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel5.Name = "materialLabel5";
+            this.materialLabel5.Size = new System.Drawing.Size(61, 19);
+            this.materialLabel5.TabIndex = 13;
+            this.materialLabel5.Text = "Atelier :";
             // 
             // tabPage4
             // 

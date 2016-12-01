@@ -43,7 +43,8 @@ namespace MaisonDesLigues
             try
             {
                 UneConnexion = new Bdd(TxtLogin.Text, TxtMdp.Text);
-                (new FrmPrincipale()).Show(this);
+                (new FrmAdd()).Show(this);
+                //(new FrmPrincipale()).Show(this);
                 this.Hide();
             }
             catch (Exception ex)

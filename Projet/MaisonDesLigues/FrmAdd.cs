@@ -15,9 +15,7 @@ namespace MaisonDesLigues
     public partial class FrmAdd : MaterialForm
     {
         private readonly MaterialSkinManager materialSkinManager;
-        internal BaseDeDonnees.Bdd UneConnexion;
-        internal String TitreApplication;
-        internal Logger _logger;
+        private Bdd UneConnexion;
 
 
         /// <summary>
@@ -34,6 +32,7 @@ namespace MaisonDesLigues
         
         private void FrmAdd_Load(object sender, EventArgs e)
         {
+            UneConnexion = ((FrmLogin)Owner).UneConnexion;
         }
 
         private void materialSingleLineTextField1_KeyPress(object sender, KeyPressEventArgs e)
@@ -42,6 +41,11 @@ namespace MaisonDesLigues
             {
                 e.Handled = true;
             }
+        }
+
+        private void btn_ajouterAtelier_Click(object sender, EventArgs e)
+        {
+            UneConnexion.AddAtelier(materialSingleLineTextField_libelle_atelier.Text, Convert.ToInt32(materialSingleLineTextField_nbPlaceAtelier.Text));
         }
     }
 }
