@@ -16,6 +16,7 @@ namespace MaisonDesLigues
     {
         private readonly MaterialSkinManager materialSkinManager;
         private Bdd UneConnexion;
+        private DataTable atelierData;
 
 
         /// <summary>
@@ -29,7 +30,30 @@ namespace MaisonDesLigues
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
         }
-        
+
+        private void GetAtelier()
+        {
+            try
+            {
+                atelierData = UneConnexion.ObtenirDonnesOracle("atelier");
+            }
+            catch (Oracle.DataAccess.Client.OracleException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            comboBox_Ateliers.Items.Clear();
+            for (int i = 0; i < atelierData.Rows.Count; i++)
+            {
+                comboBox_Ateliers.Items.Add(atelierData.Rows[i]["LIBELLEATELIER"]);
+                comboBox_Atelier_Vacations.Items.Add(atelierData.Rows[i]["LIBELLEATELIER"]);
+            }
+            comboBox_Ateliers.SelectedIndex = 0;
+            comboBox_Atelier_Vacations.SelectedIndex = 0;
+
+            //MessageBox.Show("Nb place : " + (atelierData.Rows[1]["NBPLACESMAXI"]));
+
+        }
+
         private void FrmAdd_Load(object sender, EventArgs e)
         {
             try
@@ -39,6 +63,8 @@ namespace MaisonDesLigues
             {
                 throw new Exception(ex.Message);
             }
+
+            GetAtelier();
         }
 
         private void materialSingleLineTextField1_KeyPress(object sender, KeyPressEventArgs e)
@@ -52,6 +78,7 @@ namespace MaisonDesLigues
         private void btn_ajouterAtelier_Click(object sender, EventArgs e)
         {
             UneConnexion.AddAtelier(materialSingleLineTextField_libelle_atelier.Text, Convert.ToInt32(materialSingleLineTextField_nbPlaceAtelier.Text));
+            GetAtelier();
         }
     }
 }

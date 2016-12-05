@@ -30,8 +30,6 @@ namespace MaisonDesLigues
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
-
-            this.KeyDown += new KeyEventHandler(this.Form1_KeyDown);
         }
 
         private void Login()
@@ -46,17 +44,6 @@ namespace MaisonDesLigues
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-
-
-        }
-
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
-            Console.WriteLine("ENTER");
-            if (e.KeyCode == Keys.Enter)
-            {
-                Login();
             }
         }
 
@@ -85,6 +72,21 @@ namespace MaisonDesLigues
         private void FrmLogin_Load(object sender, EventArgs e)
         {
             this.ControleValide(sender, e);
+        }
+
+        private void FrmLogin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void FrmLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(1);
+        }
+
+        private void FrmLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+
         }
     }
 }

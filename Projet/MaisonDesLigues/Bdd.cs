@@ -120,6 +120,7 @@ namespace BaseDeDonnees
             return (Regex.Split(message[1], ":"))[1];
         }
 
+        //Ajout d'un atelier
         public void AddAtelier(string libelle, int nbPlace)
         {
             try
