@@ -52,9 +52,6 @@ namespace MaisonDesLigues
                 comboBox_Ateliers.SelectedIndex = 0;
                 comboBox_Atelier_Vacations.SelectedIndex = 0;
             }
-
-            //MessageBox.Show("Nb place : " + (atelierData.Rows[1]["NBPLACESMAXI"]));
-
         }
 
         private void FrmAdd_Load(object sender, EventArgs e)
@@ -87,6 +84,11 @@ namespace MaisonDesLigues
         private void materialFlatButton_AjouterTheme_Click(object sender, EventArgs e)
         {
             UneConnexion.AddTheme(materialSingleLineTextField_LibelleTheme.Text, Convert.ToInt32(atelierData.Rows[comboBox_Ateliers.SelectedIndex]["ID"]));
+        }
+
+        private void materialFlatButton_AjouterVacations_Click(object sender, EventArgs e)
+        {
+            UneConnexion.AddVacation(Convert.ToInt32(atelierData.Rows[comboBox_Atelier_Vacations.SelectedIndex]["ID"]), maskedTextBox_HeureDebut.Text, maskedTextBox_HeureFin.Text);
         }
     }
 }

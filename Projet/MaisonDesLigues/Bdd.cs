@@ -143,15 +143,44 @@ namespace BaseDeDonnees
 
         public void AddTheme(string libelle, int idAtelier)
         {
-
             try
             {
                 this.UneOracleCommand = new OracleCommand();
                 this.UneOracleCommand.Connection = CnOracle;
                 this.UneOracleCommand.CommandText = "GERERTHEME.InsertTheme";
                 this.UneOracleCommand.CommandType = CommandType.StoredProcedure;
-                this.UneOracleCommand.Parameters.Add("p_IDATELIER.", OracleDbType.Int32).Value = idAtelier;
+                this.UneOracleCommand.Parameters.Add("p_IDATELIER", OracleDbType.Int32).Value = idAtelier;
                 this.UneOracleCommand.Parameters.Add("p_LIBELLETHEME", OracleDbType.Varchar2).Value = libelle;
+
+                this.UneOracleCommand.ExecuteNonQuery();
+
+            }
+            catch (OracleException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private DateTime GetDateTime(string heure)
+        {
+            string[] hoursStarts = heure.Split(':');
+            DateTime dtDebut = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Convert.ToInt32((hoursStarts[0].Length > 0 ) ? Convert.ToInt32(hoursStarts[0]) : 0), Convert.ToInt32((hoursStarts[1].Length > 0) ? Convert.ToInt32(hoursStarts[1]) : 0), 0);
+
+            return dtDebut;
+        }
+
+        public void AddVacation(int idAtelier, string heureDebut, string heureFin)
+        {
+            try
+            {
+
+                this.UneOracleCommand = new OracleCommand();
+                this.UneOracleCommand.Connection = CnOracle;
+                this.UneOracleCommand.CommandText = "GERERVACATION.InsertVacation";
+                this.UneOracleCommand.CommandType = CommandType.StoredProcedure;
+                this.UneOracleCommand.Parameters.Add("p_IDATELIER", OracleDbType.Int32).Value = idAtelier;
+                this.UneOracleCommand.Parameters.Add("p_HEUREDEBUT", OracleDbType.Date).Value = GetDateTime(heureDebut);
+                this.UneOracleCommand.Parameters.Add("p_HEUREFIN", OracleDbType.Date).Value = GetDateTime(heureFin);
 
                 this.UneOracleCommand.ExecuteNonQuery();
 

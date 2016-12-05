@@ -293,6 +293,7 @@
             this.materialFlatButton_AjouterVacations.TabIndex = 19;
             this.materialFlatButton_AjouterVacations.Text = "Ajouter";
             this.materialFlatButton_AjouterVacations.UseVisualStyleBackColor = false;
+            this.materialFlatButton_AjouterVacations.Click += new System.EventHandler(this.materialFlatButton_AjouterVacations_Click);
             // 
             // materialLabel7
             // 
