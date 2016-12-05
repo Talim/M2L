@@ -210,6 +210,7 @@
             this.materialFlatButton_AjouterTheme.TabIndex = 13;
             this.materialFlatButton_AjouterTheme.Text = "Ajouter";
             this.materialFlatButton_AjouterTheme.UseVisualStyleBackColor = false;
+            this.materialFlatButton_AjouterTheme.Click += new System.EventHandler(this.materialFlatButton_AjouterTheme_Click);
             // 
             // comboBox_Ateliers
             // 
