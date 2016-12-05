@@ -174,13 +174,14 @@ namespace BaseDeDonnees
             try
             {
 
+                MessageBox.Show(GetDateTime(heureDebut).ToString());
                 this.UneOracleCommand = new OracleCommand();
                 this.UneOracleCommand.Connection = CnOracle;
                 this.UneOracleCommand.CommandText = "GERERVACATION.InsertVacation";
                 this.UneOracleCommand.CommandType = CommandType.StoredProcedure;
                 this.UneOracleCommand.Parameters.Add("p_IDATELIER", OracleDbType.Int32).Value = idAtelier;
-                this.UneOracleCommand.Parameters.Add("p_HEUREDEBUT", OracleDbType.Date).Value = GetDateTime(heureDebut);
-                this.UneOracleCommand.Parameters.Add("p_HEUREFIN", OracleDbType.Date).Value = GetDateTime(heureFin);
+                this.UneOracleCommand.Parameters.Add("p_HEUREDEBUT", OracleDbType.Varchar2).Value = GetDateTime(heureDebut).ToString();
+                this.UneOracleCommand.Parameters.Add("p_HEUREFIN", OracleDbType.Varchar2).Value = GetDateTime(heureFin).ToString();
 
                 this.UneOracleCommand.ExecuteNonQuery();
 
