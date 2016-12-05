@@ -30,15 +30,11 @@ namespace MaisonDesLigues
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
-        }
-        
 
-        /// <summary>
-        /// gestion événement click sur le bonton ok
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void CmdOk_Click(object sender, EventArgs e)
+            this.KeyDown += new KeyEventHandler(this.Form1_KeyDown);
+        }
+
+        private void Login()
         {
             try
             {
@@ -51,6 +47,27 @@ namespace MaisonDesLigues
             {
                 MessageBox.Show(ex.Message);
             }
+
+
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            Console.WriteLine("ENTER");
+            if (e.KeyCode == Keys.Enter)
+            {
+                Login();
+            }
+        }
+
+        /// <summary>
+        /// gestion événement click sur le bonton ok
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CmdOk_Click(object sender, EventArgs e)
+        {
+            Login();
         }
         /// <summary>
         /// gestion de l'activation/désactivation du bouton ok

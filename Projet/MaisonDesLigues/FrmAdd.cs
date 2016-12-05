@@ -32,7 +32,13 @@ namespace MaisonDesLigues
         
         private void FrmAdd_Load(object sender, EventArgs e)
         {
-            UneConnexion = ((FrmLogin)Owner).UneConnexion;
+            try
+            {
+                UneConnexion = ((FrmLogin)Owner).UneConnexion;
+            }catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         private void materialSingleLineTextField1_KeyPress(object sender, KeyPressEventArgs e)

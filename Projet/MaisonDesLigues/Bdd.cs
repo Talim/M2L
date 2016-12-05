@@ -126,7 +126,7 @@ namespace BaseDeDonnees
             {
                 this.UneOracleCommand = new OracleCommand();
                 this.UneOracleCommand.Connection = CnOracle;
-                this.UneOracleCommand.CommandText = "InsertAtelier";
+                this.UneOracleCommand.CommandText = "GERERATELIER.InsertAtelier";
                 this.UneOracleCommand.CommandType = CommandType.StoredProcedure;
                 this.UneOracleCommand.Parameters.Add("p_LIBELLEATELIER", OracleDbType.Varchar2).Value = libelle;
                 this.UneOracleCommand.Parameters.Add("p_NBPLACESMAXI", OracleDbType.Int32).Value = nbPlace;
