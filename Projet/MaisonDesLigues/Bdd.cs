@@ -135,7 +135,28 @@ namespace BaseDeDonnees
                 this.UneOracleCommand.ExecuteNonQuery();
 
             }
-            catch(OracleException ex)
+            catch (OracleException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void AddTheme(string libelle, int idAtelier)
+        {
+
+            try
+            {
+                this.UneOracleCommand = new OracleCommand();
+                this.UneOracleCommand.Connection = CnOracle;
+                this.UneOracleCommand.CommandText = "GERERTHEME.InsertTheme";
+                this.UneOracleCommand.CommandType = CommandType.StoredProcedure;
+                this.UneOracleCommand.Parameters.Add("p_IDATELIER.", OracleDbType.Int32).Value = idAtelier;
+                this.UneOracleCommand.Parameters.Add("p_LIBELLETHEME", OracleDbType.Varchar2).Value = libelle;
+
+                this.UneOracleCommand.ExecuteNonQuery();
+
+            }
+            catch (OracleException ex)
             {
                 MessageBox.Show(ex.Message);
             }

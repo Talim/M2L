@@ -47,8 +47,11 @@ namespace MaisonDesLigues
                 comboBox_Ateliers.Items.Add(atelierData.Rows[i]["LIBELLEATELIER"]);
                 comboBox_Atelier_Vacations.Items.Add(atelierData.Rows[i]["LIBELLEATELIER"]);
             }
-            comboBox_Ateliers.SelectedIndex = 0;
-            comboBox_Atelier_Vacations.SelectedIndex = 0;
+            if (comboBox_Ateliers.Items.Count > 0)
+            {
+                comboBox_Ateliers.SelectedIndex = 0;
+                comboBox_Atelier_Vacations.SelectedIndex = 0;
+            }
 
             //MessageBox.Show("Nb place : " + (atelierData.Rows[1]["NBPLACESMAXI"]));
 
@@ -79,6 +82,11 @@ namespace MaisonDesLigues
         {
             UneConnexion.AddAtelier(materialSingleLineTextField_libelle_atelier.Text, Convert.ToInt32(materialSingleLineTextField_nbPlaceAtelier.Text));
             GetAtelier();
+        }
+
+        private void materialFlatButton_AjouterTheme_Click(object sender, EventArgs e)
+        {
+            UneConnexion.AddTheme(materialSingleLineTextField_LibelleTheme.Text, Convert.ToInt32(atelierData.Rows[comboBox_Ateliers.SelectedIndex]["ID"]));
         }
     }
 }
