@@ -32,7 +32,7 @@ namespace MaisonDesLigues
         /// <param name="e"></param>
         private void FrmPrincipale_Load(object sender, EventArgs e)
         {
-            UneConnexion = ((FrmLogin)Owner).UneConnexion;
+            UneConnexion = ((FrmLogin)Owner).connection;
             TitreApplication = ((FrmLogin)Owner).TitreApplication;
             this.Text = TitreApplication;
             _logger = ((FrmLogin)Owner)._logger;

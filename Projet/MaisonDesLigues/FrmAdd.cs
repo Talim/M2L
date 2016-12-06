@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 using BaseDeDonnees;
 using Oracle.ManagedDataAccess.Client;
-using System.Configuration;
 using MaterialSkin.Controls;
 using MaterialSkin;
 
@@ -20,7 +14,6 @@ namespace MaisonDesLigues
         private Bdd _connection;
         private DataTable _atelierData;
         private DataTable _vacationData;
-
 
         /// <summary>
         /// constructeur
@@ -38,7 +31,7 @@ namespace MaisonDesLigues
         {
             try
             {
-                this._connection = ((FrmLogin)Owner).UneConnexion;
+                this._connection = ((FrmLogin)Owner).connection;
             }catch(Exception ex)
             {
                 throw new Exception(ex.Message);
@@ -53,6 +46,7 @@ namespace MaisonDesLigues
         /// </summary>
         private void GetAteliers()
         {
+
             try
             {
                 this._atelierData = this._connection.ObtenirDonnesOracle("atelier");
@@ -103,7 +97,6 @@ namespace MaisonDesLigues
                 comboBox_Vacations.SelectedIndex = 0;
             }
         }
-
 
         private void comboBox_Vacations_SelectedIndexChanged(object sender, EventArgs e)
         {

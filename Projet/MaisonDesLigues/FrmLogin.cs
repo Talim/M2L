@@ -15,7 +15,7 @@ namespace MaisonDesLigues
     public partial class FrmLogin : MaterialForm
     {
         private readonly MaterialSkinManager materialSkinManager;
-        internal BaseDeDonnees.Bdd UneConnexion;
+        internal Bdd connection;
         internal String TitreApplication;
         internal Logger _logger;
 
@@ -36,7 +36,7 @@ namespace MaisonDesLigues
         {
             try
             {
-                UneConnexion = new Bdd(TxtLogin.Text, TxtMdp.Text);
+                this.connection = new Bdd(TxtLogin.Text, TxtMdp.Text);
                 (new FrmAdd()).Show(this);
                 //(new FrmPrincipale()).Show(this);
                 this.Hide();
@@ -84,9 +84,5 @@ namespace MaisonDesLigues
             Environment.Exit(1);
         }
 
-        private void FrmLogin_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
     }
 }

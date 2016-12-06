@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows.Forms;
-using Oracle.ManagedDataAccess.Client;
 using System.Data;
 using BaseDeDonnees;
-using System.Reflection;
-
 
 namespace MaisonDesLigues
 {
     internal abstract class Utilitaire
     {
+
         /// <summary>
         /// Permet de construire une chaine en format HH:MI avec grace a une chaine en format "DD/MM/YYY HH:MI"
         /// </summary>

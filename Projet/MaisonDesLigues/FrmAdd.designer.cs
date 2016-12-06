@@ -31,6 +31,7 @@
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.textBox_nbPlaceAtelier = new System.Windows.Forms.MaskedTextBox();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.btn_ajouterAtelier = new MaterialSkin.Controls.MaterialFlatButton();
@@ -57,7 +58,6 @@
             this.textBox_heureDebutModifier = new System.Windows.Forms.MaskedTextBox();
             this.comboBox_Vacations = new System.Windows.Forms.ComboBox();
             this.materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
-            this.textBox_nbPlaceAtelier = new System.Windows.Forms.MaskedTextBox();
             this.materialTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -104,6 +104,15 @@
             this.tabPage1.Size = new System.Drawing.Size(506, 133);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Ateliers";
+            // 
+            // textBox_nbPlaceAtelier
+            // 
+            this.textBox_nbPlaceAtelier.Location = new System.Drawing.Point(147, 61);
+            this.textBox_nbPlaceAtelier.Mask = "00";
+            this.textBox_nbPlaceAtelier.Name = "textBox_nbPlaceAtelier";
+            this.textBox_nbPlaceAtelier.PromptChar = '0';
+            this.textBox_nbPlaceAtelier.Size = new System.Drawing.Size(48, 20);
+            this.textBox_nbPlaceAtelier.TabIndex = 11;
             // 
             // materialLabel2
             // 
@@ -446,15 +455,6 @@
             this.materialLabel10.Size = new System.Drawing.Size(77, 19);
             this.materialLabel10.TabIndex = 20;
             this.materialLabel10.Text = "Vacation :";
-            // 
-            // textBox_nbPlaceAtelier
-            // 
-            this.textBox_nbPlaceAtelier.Location = new System.Drawing.Point(147, 61);
-            this.textBox_nbPlaceAtelier.Mask = "00";
-            this.textBox_nbPlaceAtelier.Name = "textBox_nbPlaceAtelier";
-            this.textBox_nbPlaceAtelier.PromptChar = '0';
-            this.textBox_nbPlaceAtelier.Size = new System.Drawing.Size(48, 20);
-            this.textBox_nbPlaceAtelier.TabIndex = 11;
             // 
             // FrmAdd
             // 
