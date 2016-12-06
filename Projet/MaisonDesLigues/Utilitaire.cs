@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows.Forms;
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 using System.Data;
 using BaseDeDonnees;
 using System.Reflection;
