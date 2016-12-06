@@ -7,7 +7,7 @@ using Oracle.ManagedDataAccess.Client;
 using System.Configuration;
 using System.Windows.Forms;
 using System.Collections.ObjectModel;
-using System.Text.RegularExpressions;  // bibliothèque pour les expressions régulières
+using System.Text.RegularExpressions;
 using MaisonDesLigues;
 
 
@@ -16,19 +16,15 @@ namespace BaseDeDonnees
 {
     public class Bdd
     {
-        //
-        // propriétés membres
-        //
-        private OracleConnection CnOracle;
-        private OracleCommand UneOracleCommand;
-        private OracleDataAdapter UnOracleDataAdapter;
-        private DataTable UneDataTable;
-        private OracleTransaction UneOracleTransaction;
-
+        //VARIABLE
+        private OracleConnection _oracleConnection;
+        private OracleCommand _oracleOrder;
+        private OracleDataAdapter _oracleDataAdapter;
+        private OracleTransaction _oracleTransaction;
+        private DataTable _dataTable;
         private Logger _logger;
-        //
-        // méthodes
-        //
+
+        //METHODE
         /// <summary>
         /// Constructeur de la connexion
         /// </summary>
@@ -54,7 +50,6 @@ namespace BaseDeDonnees
                 /// On essaie deux types de connexion, une à distance dans un premier temps et une en local
                 /// dans un second temps.
                 /// </remarks>
-                /// 
 
                 string cnOut = string.Format(CnString.ConnectionString.ToString(),
                                           ConfigurationManager.AppSettings["SERVEROUT"],
@@ -73,24 +68,21 @@ namespace BaseDeDonnees
                 try
                 {
                     // Connexion à distance
-                    CnOracle = new OracleConnection(cnOut);
-                    CnOracle.Open();
+                    this._oracleConnection = new OracleConnection(cnOut);
+                    this._oracleConnection.Open();
                     MessageBox.Show("Connexion à distance effectué avec succès !");
                 }
                 catch (OracleException Oex)
                 {
-                    //MessageBox.Show(Oex.Message + "\n\n" + "L'application va essayer de se connecter en local.");
                     essaiCnxLocal = true;
-                    // _logger.ajouterLogErr(...);
                 }
                 finally
                 {
                     if (essaiCnxLocal)
                     {
-                        CnOracle = new OracleConnection(cnIn);
-                        CnOracle.Open();
+                        this._oracleConnection = new OracleConnection(cnIn);
+                        this._oracleConnection.Open();
                         MessageBox.Show("Connexion en local effectué avec succès !");
-                        // _logger.ajouterLog(...);
                     }
 
                 }
@@ -101,13 +93,15 @@ namespace BaseDeDonnees
                     throw new Exception("Erreur à la connexion : Nom d'utilisateur ou mot de passe incorrect");
             }
         }
+
         /// <summary>
         /// Méthode permettant de fermer la connexion
         /// </summary>
         public void FermerConnexion()
         {
-            this.CnOracle.Close();
+            this._oracleConnection.Close();
         }
+
         /// <summary>
         /// méthode permettant de renvoyer un message d'erreur provenant de la bd
         /// après l'avoir formatté. On ne renvoie que le message, sans code erreur
@@ -120,19 +114,23 @@ namespace BaseDeDonnees
             return (Regex.Split(message[1], ":"))[1];
         }
 
-        //Ajout d'un atelier
+        /// <summary>
+        /// Méthode permettant d'ajouter un atelier a la bd
+        /// </summary>
+        /// <param name="libelle">libelle de l'atelier</param>
+        /// <param name="nbPlace">nombre de place de l'atelier</param>
         public void AddAtelier(string libelle, int nbPlace)
         {
             try
             {
-                this.UneOracleCommand = new OracleCommand();
-                this.UneOracleCommand.Connection = CnOracle;
-                this.UneOracleCommand.CommandText = "GERERATELIER.InsertAtelier";
-                this.UneOracleCommand.CommandType = CommandType.StoredProcedure;
-                this.UneOracleCommand.Parameters.Add("p_LIBELLEATELIER", OracleDbType.Varchar2).Value = libelle;
-                this.UneOracleCommand.Parameters.Add("p_NBPLACESMAXI", OracleDbType.Int32).Value = nbPlace;
+                this._oracleOrder = new OracleCommand();
+                this._oracleOrder.Connection = this._oracleConnection;
+                this._oracleOrder.CommandText = "GERERATELIER.InsertAtelier";
+                this._oracleOrder.CommandType = CommandType.StoredProcedure;
+                this._oracleOrder.Parameters.Add("p_LIBELLEATELIER", OracleDbType.Varchar2).Value = libelle;
+                this._oracleOrder.Parameters.Add("p_NBPLACESMAXI", OracleDbType.Int32).Value = nbPlace;
 
-                this.UneOracleCommand.ExecuteNonQuery();
+                this._oracleOrder.ExecuteNonQuery();
 
             }
             catch (OracleException ex)
@@ -141,18 +139,23 @@ namespace BaseDeDonnees
             }
         }
 
+        /// <summary>
+        /// Méthode permettant d'ajouter un thème
+        /// </summary>
+        /// <param name="libelle">libellé du thème</param>
+        /// <param name="idAtelier">id de l'atelier lié au thème</param>
         public void AddTheme(string libelle, int idAtelier)
         {
             try
             {
-                this.UneOracleCommand = new OracleCommand();
-                this.UneOracleCommand.Connection = CnOracle;
-                this.UneOracleCommand.CommandText = "GERERTHEME.InsertTheme";
-                this.UneOracleCommand.CommandType = CommandType.StoredProcedure;
-                this.UneOracleCommand.Parameters.Add("p_IDATELIER", OracleDbType.Int32).Value = idAtelier;
-                this.UneOracleCommand.Parameters.Add("p_LIBELLETHEME", OracleDbType.Varchar2).Value = libelle;
+                this._oracleOrder = new OracleCommand();
+                this._oracleOrder.Connection = this._oracleConnection;
+                this._oracleOrder.CommandText = "GERERTHEME.InsertTheme";
+                this._oracleOrder.CommandType = CommandType.StoredProcedure;
+                this._oracleOrder.Parameters.Add("p_IDATELIER", OracleDbType.Int32).Value = idAtelier;
+                this._oracleOrder.Parameters.Add("p_LIBELLETHEME", OracleDbType.Varchar2).Value = libelle;
 
-                this.UneOracleCommand.ExecuteNonQuery();
+                this._oracleOrder.ExecuteNonQuery();
 
             }
             catch (OracleException ex)
@@ -161,27 +164,25 @@ namespace BaseDeDonnees
             }
         }
 
-        private DateTime GetDateTime(string heure)
-        {
-            string[] hoursStarts = heure.Split(':');
-            DateTime dtDebut = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Convert.ToInt32((hoursStarts[0].Length > 0 ) ? Convert.ToInt32(hoursStarts[0]) : 0), Convert.ToInt32((hoursStarts[1].Length > 0) ? Convert.ToInt32(hoursStarts[1]) : 0), 0);
-
-            return dtDebut;
-        }
-
+        /// <summary>
+        /// Met à jour une vacation
+        /// </summary>
+        /// <param name="numero">numéro de la vaction a mettre à jour</param>
+        /// <param name="heureDebut">nouvelle heure de début</param>
+        /// <param name="heureFin">nouvelle heure de fin</param>
         public void UpdateVacation(int numero, string heureDebut, string heureFin)
         {
             try
             {
-                this.UneOracleCommand = new OracleCommand();
-                this.UneOracleCommand.Connection = CnOracle;
-                this.UneOracleCommand.CommandText = "GERERVACATION.UpdateVacation";
-                this.UneOracleCommand.CommandType = CommandType.StoredProcedure;
-                this.UneOracleCommand.Parameters.Add("p_NUMERO", OracleDbType.Int32).Value = numero;
-                this.UneOracleCommand.Parameters.Add("p_HEUREDEBUT", OracleDbType.Varchar2).Value = GetDateTime(heureDebut).ToString();
-                this.UneOracleCommand.Parameters.Add("p_HEUREFIN", OracleDbType.Varchar2).Value = GetDateTime(heureFin).ToString();
+                this._oracleOrder = new OracleCommand();
+                this._oracleOrder.Connection = this._oracleConnection;
+                this._oracleOrder.CommandText = "GERERVACATION.UpdateVacation";
+                this._oracleOrder.CommandType = CommandType.StoredProcedure;
+                this._oracleOrder.Parameters.Add("p_NUMERO", OracleDbType.Int32).Value = numero;
+                this._oracleOrder.Parameters.Add("p_HEUREDEBUT", OracleDbType.Varchar2).Value = Utilitaire.GetDateTime(heureDebut).ToString();
+                this._oracleOrder.Parameters.Add("p_HEUREFIN", OracleDbType.Varchar2).Value = Utilitaire.GetDateTime(heureFin).ToString();
 
-                this.UneOracleCommand.ExecuteNonQuery();
+                this._oracleOrder.ExecuteNonQuery();
 
             }
             catch (OracleException ex)
@@ -190,19 +191,25 @@ namespace BaseDeDonnees
             }
         }
 
+        /// <summary>
+        /// Ajoute une nouvelle vacation
+        /// </summary>
+        /// <param name="idAtelier">id de l'atelier lié a la vacation</param>
+        /// <param name="heureDebut">heure de début</param>
+        /// <param name="heureFin">heure de fin</param>
         public void AddVacation(int idAtelier, string heureDebut, string heureFin)
         {
             try
             {
-                this.UneOracleCommand = new OracleCommand();
-                this.UneOracleCommand.Connection = CnOracle;
-                this.UneOracleCommand.CommandText = "GERERVACATION.InsertVacation";
-                this.UneOracleCommand.CommandType = CommandType.StoredProcedure;
-                this.UneOracleCommand.Parameters.Add("p_IDATELIER", OracleDbType.Int32).Value = idAtelier;
-                this.UneOracleCommand.Parameters.Add("p_HEUREDEBUT", OracleDbType.Varchar2).Value = GetDateTime(heureDebut).ToString();
-                this.UneOracleCommand.Parameters.Add("p_HEUREFIN", OracleDbType.Varchar2).Value = GetDateTime(heureFin).ToString();
+                this._oracleOrder = new OracleCommand();
+                this._oracleOrder.Connection = this._oracleConnection;
+                this._oracleOrder.CommandText = "GERERVACATION.InsertVacation";
+                this._oracleOrder.CommandType = CommandType.StoredProcedure;
+                this._oracleOrder.Parameters.Add("p_IDATELIER", OracleDbType.Int32).Value = idAtelier;
+                this._oracleOrder.Parameters.Add("p_HEUREDEBUT", OracleDbType.Varchar2).Value = Utilitaire.GetDateTime(heureDebut).ToString();
+                this._oracleOrder.Parameters.Add("p_HEUREFIN", OracleDbType.Varchar2).Value = Utilitaire.GetDateTime(heureFin).ToString();
 
-                this.UneOracleCommand.ExecuteNonQuery();
+                this._oracleOrder.ExecuteNonQuery();
 
             }
             catch (OracleException ex)
@@ -220,19 +227,20 @@ namespace BaseDeDonnees
         {
             try
             {
-                string Sql = "select * from " + UneTableOuVue;
-                this.UneOracleCommand = new OracleCommand(Sql, CnOracle);
-                UnOracleDataAdapter = new OracleDataAdapter();
-                UnOracleDataAdapter.SelectCommand = this.UneOracleCommand;
-                UneDataTable = new DataTable();
-                UnOracleDataAdapter.Fill(UneDataTable);
+                string sql = "select * from " + UneTableOuVue;
+                this._oracleOrder = new OracleCommand(sql, this._oracleConnection);
+                this._oracleDataAdapter = new OracleDataAdapter();
+                this._oracleDataAdapter.SelectCommand = this._oracleOrder;
+                this._dataTable = new DataTable();
+                this._oracleDataAdapter.Fill(this._dataTable);
             }
             catch(OracleException ex)
             {
                 MessageBox.Show(ex.Message + " ::: " + UneTableOuVue);
             }
-            return UneDataTable;
+            return _dataTable;
         }
+
         /// <summary>
         /// méthode privée permettant de valoriser les paramètres d'un objet commmand communs aux licenciés, bénévoles et intervenants
         /// </summary>
@@ -256,6 +264,7 @@ namespace BaseDeDonnees
             Cmd.Parameters.Add("pTel", OracleDbType.Varchar2, ParameterDirection.Input).Value = pTel;
             Cmd.Parameters.Add("pMail", OracleDbType.Varchar2, ParameterDirection.Input).Value = pMail;
         }
+
         /// <summary>
         /// procédure qui va se charger d'invoquer la procédure stockée qui ira inscrire un participant de type bénévole
         /// </summary>
@@ -275,11 +284,11 @@ namespace BaseDeDonnees
         {
             try
             {
-                UneOracleCommand = new OracleCommand("pckparticipant.nouveaubenevole", CnOracle);
-                UneOracleCommand.CommandType = CommandType.StoredProcedure;
-                this.ParamCommunsNouveauxParticipants(UneOracleCommand, pNom, pPrenom, pAdresse1, pAdresse2, pCp, pVille, pTel, pMail);
-                UneOracleCommand.Parameters.Add("pDateNaiss", OracleDbType.Date, ParameterDirection.Input).Value = pDateNaissance;
-                UneOracleCommand.Parameters.Add("pLicence", OracleDbType.Int64, ParameterDirection.Input).Value = pNumeroLicence;
+                this._oracleOrder = new OracleCommand("pckparticipant.nouveaubenevole", this._oracleConnection);
+                this._oracleOrder.CommandType = CommandType.StoredProcedure;
+                this.ParamCommunsNouveauxParticipants(this._oracleOrder, pNom, pPrenom, pAdresse1, pAdresse2, pCp, pVille, pTel, pMail);
+                this._oracleOrder.Parameters.Add("pDateNaiss", OracleDbType.Date, ParameterDirection.Input).Value = pDateNaissance;
+                this._oracleOrder.Parameters.Add("pLicence", OracleDbType.Int64, ParameterDirection.Input).Value = pNumeroLicence;
                 //UneOracleCommand.Parameters.Add("pLesDates", OracleDbType.Array, ParameterDirection.Input).Value = pDateBenevolat;
                 OracleParameter pLesDates = new OracleParameter();
                 pLesDates.ParameterName = "pLesDates";
@@ -288,8 +297,8 @@ namespace BaseDeDonnees
 
                 pLesDates.Value = pDateBenevolat.ToArray();
                 pLesDates.Size = pDateBenevolat.Count;
-                UneOracleCommand.Parameters.Add(pLesDates);
-                UneOracleCommand.ExecuteNonQuery();
+                this._oracleOrder.Parameters.Add(pLesDates);
+                this._oracleOrder.ExecuteNonQuery();
                 MessageBox.Show("inscription bénévole effectuée");
             }
             catch (OracleException Oex)
@@ -302,6 +311,7 @@ namespace BaseDeDonnees
             }
 
         }
+
         /// <summary>
         /// méthode privée permettant de valoriser les paramètres d'un objet commmand spécifiques intervenants
         /// </summary>
@@ -313,6 +323,7 @@ namespace BaseDeDonnees
             Cmd.Parameters.Add("pIdAtelier", OracleDbType.Int16, ParameterDirection.Input).Value = pIdAtelier;
             Cmd.Parameters.Add("pIdStatut", OracleDbType.Char, ParameterDirection.Input).Value = pIdStatut;
         }
+
         /// <summary>
         /// Procédure publique qui va appeler la procédure stockée permettant d'inscrire un nouvel intervenant sans nuité
         /// </summary>
@@ -340,18 +351,13 @@ namespace BaseDeDonnees
             String MessageErreur = "";
             try
             {
-                UneOracleCommand = new OracleCommand("pckparticipant.nouvelintervenant", CnOracle);
-                UneOracleCommand.CommandType = CommandType.StoredProcedure;
-                // début de la transaction Oracle il vaut mieyx gérer les transactions dans l'applicatif que dans la bd dans les procédures stockées.
-                UneOracleTransaction = this.CnOracle.BeginTransaction();
-                // on appelle la procédure ParamCommunsNouveauxParticipants pour charger les paramètres communs aux intervenants
-                this.ParamCommunsNouveauxParticipants(UneOracleCommand, pNom, pPrenom, pAdresse1, pAdresse2, pCp, pVille, pTel, pMail);
-                // on appelle la procédure ParamsCommunsIntervenant pour charger les paramètres communs aux intervenants
-                this.ParamsSpecifiquesIntervenant(UneOracleCommand, pIdAtelier, pIdStatut);        
-                //execution
-                UneOracleCommand.ExecuteNonQuery();
-                // fin de la transaction. Si on arrive à ce point, c'est qu'aucune exception n'a été levée
-                UneOracleTransaction.Commit();
+                this._oracleOrder = new OracleCommand("pckparticipant.nouvelintervenant", this._oracleConnection);
+                this._oracleOrder.CommandType = CommandType.StoredProcedure;
+                this._oracleTransaction = this._oracleConnection.BeginTransaction();
+                this.ParamCommunsNouveauxParticipants(this._oracleOrder, pNom, pPrenom, pAdresse1, pAdresse2, pCp, pVille, pTel, pMail);
+                this.ParamsSpecifiquesIntervenant(this._oracleOrder, pIdAtelier, pIdStatut);
+                this._oracleOrder.ExecuteNonQuery();
+                this._oracleTransaction.Commit();
             }
             catch (OracleException Oex)
             {
@@ -366,13 +372,12 @@ namespace BaseDeDonnees
             {
                 if (MessageErreur.Length > 0)
                 {
-                    // annulation de la transaction
-                    UneOracleTransaction.Rollback();
-                    // Déclenchement de l'exception
+                    this._oracleTransaction.Rollback();
                     throw new Exception(MessageErreur);
                 }
             }
         }
+        
         /// <summary>
         /// Procédure publique qui va appeler la procédure stockée permettant d'inscrire un nouvel intervenant qui aura des nuités
         /// </summary>
@@ -405,24 +410,26 @@ namespace BaseDeDonnees
             /// 
             String MessageErreur="";
             try
-            {                
+            {
                 // pckparticipant.nouvelintervenant est une procédure surchargée
-                UneOracleCommand = new OracleCommand("pckparticipant.nouvelintervenant", CnOracle);
-                UneOracleCommand.CommandType = CommandType.StoredProcedure;
+                this._oracleOrder = new OracleCommand("pckparticipant.nouvelintervenant", this._oracleConnection);
+                this._oracleOrder.CommandType = CommandType.StoredProcedure;
                 // début de la transaction Oracle : il vaut mieyx gérer les transactions dans l'applicatif que dans la bd.
-                UneOracleTransaction = this.CnOracle.BeginTransaction();
-                this.ParamCommunsNouveauxParticipants(UneOracleCommand, pNom, pPrenom, pAdresse1, pAdresse2, pCp, pVille, pTel, pMail);
-                this.ParamsSpecifiquesIntervenant(UneOracleCommand, pIdAtelier, pIdStatut);
+                this._oracleTransaction = this._oracleConnection.BeginTransaction();
+                this.ParamCommunsNouveauxParticipants(this._oracleOrder, pNom, pPrenom, pAdresse1, pAdresse2, pCp, pVille, pTel, pMail);
+                this.ParamsSpecifiquesIntervenant(this._oracleOrder, pIdAtelier, pIdStatut);
 
-                //On va créer ici les paramètres spécifiques à l'inscription d'un intervenant qui réserve des nuits d'hôtel.
-                // Paramètre qui stocke les catégories sélectionnées
+                /*
+                On va créer ici les paramètres spécifiques à l'inscription d'un intervenant qui réserve des nuits d'hôtel.
+                Paramètre qui stocke les catégories sélectionnées
+                */
                 OracleParameter pOraLescategories = new OracleParameter();
                 pOraLescategories.ParameterName = "pLesCategories";
                 pOraLescategories.OracleDbType = OracleDbType.Char;
                 pOraLescategories.CollectionType = OracleCollectionType.PLSQLAssociativeArray;
                 pOraLescategories.Value = pLesCategories.ToArray();
                 pOraLescategories.Size = pLesCategories.Count;
-                UneOracleCommand.Parameters.Add(pOraLescategories);
+                this._oracleOrder.Parameters.Add(pOraLescategories);
                
                 // Paramètre qui stocke les hotels sélectionnées
                 OracleParameter pOraLesHotels = new OracleParameter();
@@ -431,7 +438,7 @@ namespace BaseDeDonnees
                 pOraLesHotels.CollectionType = OracleCollectionType.PLSQLAssociativeArray;
                 pOraLesHotels.Value = pLesHotels.ToArray();
                 pOraLesHotels.Size = pLesHotels.Count;
-                UneOracleCommand.Parameters.Add(pOraLesHotels);
+                this._oracleOrder.Parameters.Add(pOraLesHotels);
                 
                 // Paramètres qui stocke les nuits sélectionnées
                 OracleParameter pOraLesNuits = new OracleParameter();
@@ -440,34 +447,30 @@ namespace BaseDeDonnees
                 pOraLesNuits.CollectionType = OracleCollectionType.PLSQLAssociativeArray;
                 pOraLesNuits.Value = pLesNuits.ToArray();
                 pOraLesNuits.Size = pLesNuits.Count;
-                UneOracleCommand.Parameters.Add(pOraLesNuits);
-                //execution
-                UneOracleCommand.ExecuteNonQuery();
-                // fin de la transaction. Si on arrive à ce point, c'est qu'aucune exception n'a été levée
-                UneOracleTransaction.Commit();
+                this._oracleOrder.Parameters.Add(pOraLesNuits);
+                
+                this._oracleOrder.ExecuteNonQuery();
+                this._oracleTransaction.Commit();
                
             }
             catch (OracleException Oex)
             {
-                //MessageErreur="Erreur Oracle \n" + this.GetMessageOracle(Oex.Message);
-                MessageBox.Show(Oex.Message);
+                MessageErreur="Erreur Oracle \n" + this.GetMessageOracle(Oex.Message);
             }
             catch (Exception ex)
             {
-                
                 MessageErreur= "Autre Erreur, les informations n'ont pas été correctement saisies";
             }
             finally
             {
                 if (MessageErreur.Length > 0)
                 {
-                    // annulation de la transaction
-                    UneOracleTransaction.Rollback();
-                    // Déclenchement de l'exception
+                    this._oracleTransaction.Rollback();
                     throw new Exception(MessageErreur);
                 }             
             }
         }
+        
         /// <summary>
         /// fonction permettant de construire un dictionnaire dont l'id est l'id d'une nuité et le contenu une date
         /// sous la la forme : lundi 7 janvier 2013        /// 
@@ -479,7 +482,7 @@ namespace BaseDeDonnees
             DataTable LesDatesNuites = this.ObtenirDonnesOracle("VDATENUITE01");
             foreach (DataRow UneLigne in LesDatesNuites.Rows)
             {
-                LesDatesARetourner.Add(System.Convert.ToInt16(UneLigne["id"]), UneLigne["libelle"].ToString());
+                LesDatesARetourner.Add(Convert.ToInt16(UneLigne["id"]), UneLigne["libelle"].ToString());
             }
             return LesDatesARetourner;
 

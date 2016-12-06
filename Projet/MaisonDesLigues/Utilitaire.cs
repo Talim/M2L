@@ -13,7 +13,30 @@ namespace MaisonDesLigues
 {
     internal abstract class Utilitaire
     {
-        
+        /// <summary>
+        /// Permet de construire une chaine en format HH:MI avec grace a une chaine en format "DD/MM/YYY HH:MI"
+        /// </summary>
+        /// <param name="dateTime">Chaine au format "DD/MM/YYY HH:MI"</param>
+        /// <returns>chaine au format "HH:MI"</returns>
+        public static string GetTimeFromDateTimeString(string dateTime)
+        {
+            DateTime time = DateTime.Parse(dateTime);
+            return time.Hour + ":" + time.Minute;
+        }
+
+        /// <summary>
+        /// Méthode permettant de récuperer un DateTime grace a une heure et minute donné.
+        /// </summary>
+        /// <param name="time">heure et minute au format HH:MI</param>
+        /// <returns>chaine au format DateTime</returns>
+        public static DateTime GetDateTime(string time)
+        {
+            string[] hoursStarts = time.Split(':');
+            DateTime dtDebut = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Convert.ToInt32((hoursStarts[0].Length > 0) ? Convert.ToInt32(hoursStarts[0]) : 0), Convert.ToInt32((hoursStarts[1].Length > 0) ? Convert.ToInt32(hoursStarts[1]) : 0), 0);
+
+            return dtDebut;
+        }
+
         /// <summary>
         /// Cette méthode permet de renseigner les propriétés des contrôles à créer. C'est une partie commune aux 
         /// 3 types de participants : intervenant, licencié, bénévole
@@ -40,6 +63,7 @@ namespace MaisonDesLigues
             UnContainer.Controls.Add(UnControleAPlacer);
             
         }
+        
         /// <summary>
         /// Créé une combobox dans un container avec le nom passé en paramètre
         /// </summary>
@@ -56,6 +80,7 @@ namespace MaisonDesLigues
             UneCheckBox.Visible=true;
             UnContainer.Controls.Add(UneCheckBox);
         }
+
         /// <summary>
         /// Cette méthode crée des controles de type chckbox ou radio button dans un controle de type panel.
         /// Elle va chercher les données dans la base de données et crée autant de controles (les uns au dessous des autres
@@ -100,6 +125,7 @@ namespace MaisonDesLigues
             }
             UnPanel.Height = 20 * i + 5;
         }
+        
         /// <summary>
         /// méthode permettant de remplir une combobox à partir d'une source de données
         /// </summary>
@@ -114,6 +140,7 @@ namespace MaisonDesLigues
             UneCombo.DisplayMember = "libelle";
             UneCombo.ValueMember = "id";
         }
+        
         /// <summary>
         /// Cette fonction va compter le nombre de controles types CheckBox qui sont cochées contenus dans la collection controls
         /// du container passé en paramètre
