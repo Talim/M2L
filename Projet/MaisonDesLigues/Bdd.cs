@@ -169,6 +169,27 @@ namespace BaseDeDonnees
             return dtDebut;
         }
 
+        public void UpdateVacation(int numero, string heureDebut, string heureFin)
+        {
+            try
+            {
+                this.UneOracleCommand = new OracleCommand();
+                this.UneOracleCommand.Connection = CnOracle;
+                this.UneOracleCommand.CommandText = "GERERVACATION.UpdateVacation";
+                this.UneOracleCommand.CommandType = CommandType.StoredProcedure;
+                this.UneOracleCommand.Parameters.Add("p_NUMERO", OracleDbType.Int32).Value = numero;
+                this.UneOracleCommand.Parameters.Add("p_HEUREDEBUT", OracleDbType.Varchar2).Value = GetDateTime(heureDebut).ToString();
+                this.UneOracleCommand.Parameters.Add("p_HEUREFIN", OracleDbType.Varchar2).Value = GetDateTime(heureFin).ToString();
+
+                this.UneOracleCommand.ExecuteNonQuery();
+
+            }
+            catch (OracleException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         public void AddVacation(int idAtelier, string heureDebut, string heureFin)
         {
             try

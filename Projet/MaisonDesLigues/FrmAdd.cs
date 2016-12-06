@@ -122,5 +122,22 @@ namespace MaisonDesLigues
             UneConnexion.AddVacation(Convert.ToInt32(atelierData.Rows[comboBox_Atelier_Vacations.SelectedIndex]["ID"]), maskedTextBox_HeureDebut.Text, maskedTextBox_HeureFin.Text);
             this.GetVacation();
         }
+
+        private string GetHoursFromDateTime(string dateTime)
+        {
+            DateTime time = DateTime.Parse(dateTime);
+            return time.Hour + ":" + time.Minute;
+        }
+
+        private void comboBox_Vacations_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            maskedTextBox_heureDebutModifier.Text = GetHoursFromDateTime(vacationData.Rows[comboBox_Vacations.SelectedIndex]["HEUREDEBUT"].ToString());
+            maskedTextBox_HeureFinModifier.Text = GetHoursFromDateTime(vacationData.Rows[comboBox_Vacations.SelectedIndex]["HEUREFIN"].ToString());
+        }
+
+        private void materialFlatButton_modifier_Click(object sender, EventArgs e)
+        {
+            UneConnexion.UpdateVacation(Convert.ToInt32(vacationData.Rows[comboBox_Vacations.SelectedIndex]["NUMERO"]), maskedTextBox_heureDebutModifier.Text, maskedTextBox_HeureFinModifier.Text);
+        }
     }
 }

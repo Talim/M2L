@@ -393,6 +393,7 @@
             this.materialFlatButton_modifier.TabIndex = 26;
             this.materialFlatButton_modifier.Text = "Modifier";
             this.materialFlatButton_modifier.UseVisualStyleBackColor = false;
+            this.materialFlatButton_modifier.Click += new System.EventHandler(this.materialFlatButton_modifier_Click);
             // 
             // materialLabel8
             // 
@@ -447,6 +448,7 @@
             this.comboBox_Vacations.Name = "comboBox_Vacations";
             this.comboBox_Vacations.Size = new System.Drawing.Size(194, 21);
             this.comboBox_Vacations.TabIndex = 21;
+            this.comboBox_Vacations.SelectedIndexChanged += new System.EventHandler(this.comboBox_Vacations_SelectedIndexChanged);
             // 
             // materialLabel10
             // 
