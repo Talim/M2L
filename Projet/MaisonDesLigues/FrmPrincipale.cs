@@ -35,7 +35,6 @@ namespace MaisonDesLigues
             UneConnexion = ((FrmLogin)Owner).connection;
             TitreApplication = ((FrmLogin)Owner).TitreApplication;
             this.Text = TitreApplication;
-            _logger = ((FrmLogin)Owner)._logger;
         }
         /// <summary>
         /// gestion de l'événement click du bouton quitter.

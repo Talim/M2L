@@ -13,6 +13,9 @@ using MaisonDesLigues;
 
 namespace BaseDeDonnees
 {
+    /// <summary>
+    /// Classe concernant la relation a la base de donnée
+    /// </summary>
     public class Bdd
     {
         //VARIABLE
@@ -21,7 +24,6 @@ namespace BaseDeDonnees
         private OracleDataAdapter _oracleDataAdapter;
         private OracleTransaction _oracleTransaction;
         private DataTable _dataTable;
-        private Logger _logger;
 
         //METHODE
         /// <summary>

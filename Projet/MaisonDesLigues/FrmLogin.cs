@@ -17,7 +17,6 @@ namespace MaisonDesLigues
         private readonly MaterialSkinManager materialSkinManager;
         internal Bdd connection;
         internal String TitreApplication;
-        internal Logger _logger;
 
 
         /// <summary>
@@ -32,18 +31,25 @@ namespace MaisonDesLigues
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
         }
 
+        /// <summary>
+        /// Methode de connexion a la base de donnée via la form Login
+        /// </summary>
         private void Login()
         {
-            try
+            Notification.ShowNotification(this, "test", "test", 1000);
+            if (this.TxtLogin.Text != "" && this.TxtMdp.Text != "")
             {
-                this.connection = new Bdd(TxtLogin.Text, TxtMdp.Text);
-                (new FrmAdd()).Show(this);
-                //(new FrmPrincipale()).Show(this);
-                this.Hide();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                try
+                {
+                    this.connection = new Bdd(TxtLogin.Text, TxtMdp.Text);
+                    (new FrmAdd()).Show(this);
+                    //(new FrmPrincipale()).Show(this);
+                    this.Hide();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
@@ -54,7 +60,7 @@ namespace MaisonDesLigues
         /// <param name="e"></param>
         private void CmdOk_Click(object sender, EventArgs e)
         {
-            Login();
+            this.Login();
         }
         /// <summary>
         /// gestion de l'activation/désactivation du bouton ok
@@ -74,15 +80,17 @@ namespace MaisonDesLigues
             this.ControleValide(sender, e);
         }
 
-        private void FrmLogin_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
         private void FrmLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
             Environment.Exit(1);
         }
 
+        private void TxtMdp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)13)
+            {
+                this.Login();
+            }
+        }
     }
 }
