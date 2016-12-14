@@ -251,7 +251,13 @@ namespace MaisonDesLigues
                     MessageBox.Show("Inscription intervenant effectuée");
                     
                 }
-
+                foreach(Control crt in this.Controls)
+                {
+                    if(crt.GetType() == typeof(TextBox))
+                    {
+                        crt.Text = "";
+                    }
+                }
                 
             }
             catch (Exception Ex)
