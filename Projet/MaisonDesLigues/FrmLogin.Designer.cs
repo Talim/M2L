@@ -52,6 +52,7 @@
             this.TxtLogin.Size = new System.Drawing.Size(232, 23);
             this.TxtLogin.TabIndex = 0;
             this.TxtLogin.UseSystemPasswordChar = false;
+            this.TxtLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMdp_KeyPress);
             // 
             // TxtMdp
             // 
@@ -67,6 +68,7 @@
             this.TxtMdp.Size = new System.Drawing.Size(232, 23);
             this.TxtMdp.TabIndex = 1;
             this.TxtMdp.UseSystemPasswordChar = true;
+            this.TxtMdp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMdp_KeyPress);
             // 
             // materialCheckBox1
             // 

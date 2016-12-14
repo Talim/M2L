@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 using BaseDeDonnees;
-using System.Configuration;
+using Oracle.ManagedDataAccess.Client;
 using MaterialSkin.Controls;
 using MaterialSkin;
 
@@ -15,9 +10,10 @@ namespace MaisonDesLigues
     public partial class FrmAdd : MaterialForm
     {
         private readonly MaterialSkinManager materialSkinManager;
-        private Bdd UneConnexion;
-        private DataTable atelierData;
 
+        private Bdd _connection;
+        private DataTable _atelierData;
+        private DataTable _vacationData;
 
         /// <summary>
         /// constructeur
@@ -31,21 +27,39 @@ namespace MaisonDesLigues
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
         }
 
-        private void GetAtelier()
+        private void FrmAdd_Load(object sender, EventArgs e)
         {
             try
             {
-                atelierData = UneConnexion.ObtenirDonnesOracle("atelier");
+                this._connection = ((FrmLogin)Owner).connection;
+            }catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
-            catch (Oracle.DataAccess.Client.OracleException ex)
+
+            this.GetAteliers();
+            this.GetVacations();
+        }
+
+        /// <summary>
+        /// permet d'obtenir la liste des ateliers
+        /// </summary>
+        private void GetAteliers()
+        {
+
+            try
+            {
+                this._atelierData = this._connection.ObtenirDonnesOracle("atelier");
+            }
+            catch (OracleException ex)
             {
                 throw new Exception(ex.Message);
             }
             comboBox_Ateliers.Items.Clear();
-            for (int i = 0; i < atelierData.Rows.Count; i++)
+            for (int i = 0; i < this._atelierData.Rows.Count; i++)
             {
-                comboBox_Ateliers.Items.Add(atelierData.Rows[i]["LIBELLEATELIER"]);
-                comboBox_Atelier_Vacations.Items.Add(atelierData.Rows[i]["LIBELLEATELIER"]);
+                comboBox_Ateliers.Items.Add(this._atelierData.Rows[i]["LIBELLEATELIER"]);
+                comboBox_Atelier_Vacations.Items.Add(this._atelierData.Rows[i]["LIBELLEATELIER"]);
             }
             if (comboBox_Ateliers.Items.Count > 0)
             {
@@ -54,41 +68,66 @@ namespace MaisonDesLigues
             }
         }
 
-        private void FrmAdd_Load(object sender, EventArgs e)
+        /// <summary>
+        /// Permet d'obetnir la liste des vacations
+        /// </summary>
+        private void GetVacations()
         {
             try
             {
-                UneConnexion = ((FrmLogin)Owner).UneConnexion;
-            }catch(Exception ex)
+                this._vacationData = this._connection.ObtenirDonnesOracle("vacation");
+            }
+            catch (OracleException ex)
             {
                 throw new Exception(ex.Message);
             }
-
-            GetAtelier();
-        }
-
-        private void materialSingleLineTextField1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            this.comboBox_Vacations.Items.Clear();
+            for (int i = 0; i < this._vacationData.Rows.Count; i++)
             {
-                e.Handled = true;
+                for (int j = 0; j < this._atelierData.Rows.Count; j++)
+                {
+                    if (Convert.ToInt32(this._atelierData.Rows[j]["ID"]) == Convert.ToInt32(this._vacationData.Rows[i]["IDATELIER"]))
+                    {
+                        comboBox_Vacations.Items.Add(this._vacationData.Rows[i]["NUMERO"] + "- " + this._atelierData.Rows[j]["LIBELLEATELIER"]);
+                    }
+                }
+            }
+            if (comboBox_Vacations.Items.Count > 0)
+            {
+                comboBox_Vacations.SelectedIndex = 0;
             }
         }
 
+        private void comboBox_Vacations_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBox_heureDebutModifier.Text = Utilitaire.GetTimeFromDateTimeString(this._vacationData.Rows[comboBox_Vacations.SelectedIndex]["HEUREDEBUT"].ToString());
+            textBox_HeureFinModifier.Text = Utilitaire.GetTimeFromDateTimeString(this._vacationData.Rows[comboBox_Vacations.SelectedIndex]["HEUREFIN"].ToString());
+        }
+
+        //Ajouter un thème
+        private void btn_AjouterTheme_Click(object sender, EventArgs e)
+        {
+            this._connection.AddTheme(textField_LibelleTheme.Text, Convert.ToInt32(this._atelierData.Rows[comboBox_Ateliers.SelectedIndex]["ID"]));
+        }
+
+        //Ajouter une vacation
+        private void btn_AjouterVacations_Click(object sender, EventArgs e)
+        {
+            this._connection.AddVacation(Convert.ToInt32(this._atelierData.Rows[comboBox_Atelier_Vacations.SelectedIndex]["ID"]), textBox_HeureDebut.Text, textBox_HeureFin.Text);
+            this.GetVacations();
+        }
+
+        //Modifier une vacation
+        private void btn_modifierVacation_Click(object sender, EventArgs e)
+        {
+            this._connection.UpdateVacation(Convert.ToInt32(this._vacationData.Rows[comboBox_Vacations.SelectedIndex]["NUMERO"]), textBox_heureDebutModifier.Text, textBox_HeureFinModifier.Text);
+        }
+
+        //Ajouter un atelier
         private void btn_ajouterAtelier_Click(object sender, EventArgs e)
         {
-            UneConnexion.AddAtelier(materialSingleLineTextField_libelle_atelier.Text, Convert.ToInt32(materialSingleLineTextField_nbPlaceAtelier.Text));
-            GetAtelier();
-        }
-
-        private void materialFlatButton_AjouterTheme_Click(object sender, EventArgs e)
-        {
-            UneConnexion.AddTheme(materialSingleLineTextField_LibelleTheme.Text, Convert.ToInt32(atelierData.Rows[comboBox_Ateliers.SelectedIndex]["ID"]));
-        }
-
-        private void materialFlatButton_AjouterVacations_Click(object sender, EventArgs e)
-        {
-            UneConnexion.AddVacation(Convert.ToInt32(atelierData.Rows[comboBox_Atelier_Vacations.SelectedIndex]["ID"]), maskedTextBox_HeureDebut.Text, maskedTextBox_HeureFin.Text);
+            this._connection.AddAtelier(textField_atelier.Text, Convert.ToInt32(textBox_nbPlaceAtelier.Text));
+            this.GetAteliers();
         }
     }
 }

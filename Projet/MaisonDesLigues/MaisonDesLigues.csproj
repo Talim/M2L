@@ -6,7 +6,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{71820541-AD92-4F89-A69B-D20236B40465}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MaisonDesLigues</RootNamespace>
     <AssemblyName>MaisonDesLigues</AssemblyName>
@@ -40,6 +40,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>bin\Debug\MaisonDesLigues.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -63,11 +64,10 @@
       <HintPath>ComposantPerso\ComposantNuite.dll</HintPath>
     </Reference>
     <Reference Include="MaterialSkin">
-      <HintPath>..\..\..\MaterialSkin.dll</HintPath>
+      <HintPath>..\packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>
     </Reference>
-    <Reference Include="Oracle.DataAccess, Version=4.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\oraclexe\app\oracle\product\11.2.0\server\odp.net\bin\2.x\Oracle.DataAccess.dll</HintPath>
+    <Reference Include="Oracle.ManagedDataAccess">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.12.1.24160719\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -83,6 +83,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bdd.cs" />
+    <Compile Include="FormNotif.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNotif.Designer.cs">
+      <DependentUpon>FormNotif.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,7 @@
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Logger.cs" />
+    <Compile Include="Notification.cs" />
     <Compile Include="Utilitaire.cs" />
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
@@ -111,6 +118,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormNotif.resx">
+      <DependentUpon>FormNotif.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmAdd.resx">
       <DependentUpon>FrmAdd.cs</DependentUpon>
     </EmbeddedResource>
