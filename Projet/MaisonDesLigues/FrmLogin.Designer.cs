@@ -34,6 +34,7 @@
             this.CmdOk = new MaterialSkin.Controls.MaterialFlatButton();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.loginWorker = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -51,6 +52,7 @@
             this.TxtLogin.SelectionStart = 0;
             this.TxtLogin.Size = new System.Drawing.Size(232, 23);
             this.TxtLogin.TabIndex = 0;
+            this.TxtLogin.Text = "mdl";
             this.TxtLogin.UseSystemPasswordChar = false;
             this.TxtLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMdp_KeyPress);
             // 
@@ -67,12 +69,15 @@
             this.TxtMdp.SelectionStart = 0;
             this.TxtMdp.Size = new System.Drawing.Size(232, 23);
             this.TxtMdp.TabIndex = 1;
+            this.TxtMdp.Text = "mdl";
             this.TxtMdp.UseSystemPasswordChar = true;
             this.TxtMdp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMdp_KeyPress);
             // 
             // materialCheckBox1
             // 
             this.materialCheckBox1.AutoSize = true;
+            this.materialCheckBox1.Checked = true;
+            this.materialCheckBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.materialCheckBox1.Depth = 0;
             this.materialCheckBox1.Font = new System.Drawing.Font("Roboto", 10F);
             this.materialCheckBox1.Location = new System.Drawing.Point(63, 187);
@@ -85,6 +90,7 @@
             this.materialCheckBox1.TabIndex = 3;
             this.materialCheckBox1.Text = "Enregistrer le mot de passe";
             this.materialCheckBox1.UseVisualStyleBackColor = true;
+            this.materialCheckBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMdp_KeyPress);
             // 
             // CmdOk
             // 
@@ -121,6 +127,12 @@
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
             // 
+            // loginWorker
+            // 
+            this.loginWorker.WorkerSupportsCancellation = true;
+            this.loginWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.loginWorker_DoWork);
+            this.loginWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.loginWorker_RunWorkerCompleted);
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -151,5 +163,6 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private MaterialSkin.Controls.MaterialCheckBox materialCheckBox1;
         private MaterialSkin.Controls.MaterialFlatButton CmdOk;
+        private System.ComponentModel.BackgroundWorker loginWorker;
     }
 }

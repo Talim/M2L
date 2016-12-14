@@ -9,18 +9,20 @@ using BaseDeDonnees;
 using System.Configuration;
 using MaterialSkin.Controls;
 using MaterialSkin;
+using System.Threading;
 
 namespace MaisonDesLigues
 {
     public partial class FrmLogin : MaterialForm
     {
         private readonly MaterialSkinManager materialSkinManager;
+
         internal Bdd connection;
         internal String TitreApplication;
 
 
         /// <summary>
-        /// constructeur
+        /// Constructeur
         /// </summary>
         public FrmLogin()
         {
@@ -36,15 +38,13 @@ namespace MaisonDesLigues
         /// </summary>
         private void Login()
         {
-            Notification.ShowNotification(this, "test", "test", 1000);
+            //Notification.ShowNotification(this, "test", "test", 1000);
             if (this.TxtLogin.Text != "" && this.TxtMdp.Text != "")
             {
                 try
                 {
                     this.connection = new Bdd(TxtLogin.Text, TxtMdp.Text);
-                    (new FrmAdd()).Show(this);
-                    //(new FrmPrincipale()).Show(this);
-                    this.Hide();
+
                 }
                 catch (Exception ex)
                 {
@@ -54,16 +54,17 @@ namespace MaisonDesLigues
         }
 
         /// <summary>
-        /// gestion événement click sur le bonton ok
+        /// Gestion événement click sur le bonton ok
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void CmdOk_Click(object sender, EventArgs e)
         {
-            this.Login();
+            CmdOk.Text = "Connexion...";
+            loginWorker.RunWorkerAsync();
         }
         /// <summary>
-        /// gestion de l'activation/désactivation du bouton ok
+        /// Gestion de l'activation/désactivation du bouton ok
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -85,12 +86,43 @@ namespace MaisonDesLigues
             Environment.Exit(1);
         }
 
+        /// <summary>
+        /// Evenement complémentaire qui capture la touche entrée
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TxtMdp_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar == (char)13)
+            if(e.KeyChar == (char)Keys.Enter)
             {
-                this.Login();
+                CmdOk.Text = "Connexion...";
+                loginWorker.RunWorkerAsync();
             }
+        }
+
+        /// <summary>
+        /// Methode de calcul du BackgroundWorker
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void loginWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Login();
+        }
+
+        /// <summary>
+        /// Methode de fin de calcul du BackgroundWorker (finally like...)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void loginWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            CmdOk.Text = "Identification";
+            (new FrmAdd()).Show(this);
+            //(new FrmPrincipale()).Show(this);
+            this.Hide();
+            loginWorker.CancelAsync();
+            loginWorker.Dispose();
         }
     }
 }
