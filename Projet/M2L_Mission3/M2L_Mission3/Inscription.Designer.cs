@@ -265,6 +265,7 @@
             this.btn_Enregistrer.TabIndex = 27;
             this.btn_Enregistrer.Text = "Enregistrer";
             this.btn_Enregistrer.UseVisualStyleBackColor = true;
+            this.btn_Enregistrer.Click += new System.EventHandler(this.btn_Enregistrer_Click);
             // 
             // Inscription
             // 
