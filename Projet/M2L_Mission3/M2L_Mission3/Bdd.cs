@@ -117,35 +117,18 @@ namespace BaseDeDonnees
         /// <summary>
         /// Function d'appel de la procedure stockée contenu dans le package gererParticipant, elle ajoute une participant à la table
         /// </summary>
-        /// <param name="nom"></param>
-        /// <param name="prenom"></param>
-        /// <param name="adresse1"></param>
-        /// <param name="adresse2"></param>
-        /// <param name="cp"></param>
-        /// <param name="ville"></param>
-        /// <param name="tel"></param>
-        /// <param name="mail"></param>
-        /// <param name="dateInscription"></param>
+        /// <param name="id"></param>
         /// <param name="dateArrivee"></param>
         /// <param name="cleWifi"></param>
-        public void AddParticipant(string nom, string prenom, string adresse1, string adresse2, string cp, string ville, string tel,string mail,string dateInscription, string dateArrivee, string cleWifi)
+        public void AddParticipant(int id, string dateArrivee, string cleWifi)
         {
             try
             {
-                MessageBox.Show(dateArrivee);
                 this._oracleOrder = new OracleCommand();
                 this._oracleOrder.Connection = this._oracleConnection;
                 this._oracleOrder.CommandText = "GERERPARTICIPANT.InsertParticipant";
                 this._oracleOrder.CommandType = CommandType.StoredProcedure;
-                this._oracleOrder.Parameters.Add("p_NOMPARTICIPANT", OracleDbType.Varchar2).Value = nom;
-                this._oracleOrder.Parameters.Add("p_PRENOMPARTICIPANT", OracleDbType.Varchar2).Value = prenom;
-                this._oracleOrder.Parameters.Add("p_ADRESSEPARTICIPANT1", OracleDbType.Varchar2).Value = adresse1;
-                this._oracleOrder.Parameters.Add("p_ADRESSEPARTICIPANT2", OracleDbType.Varchar2).Value = adresse2;
-                this._oracleOrder.Parameters.Add("p_CPPARTICIPANT", OracleDbType.Varchar2).Value = cp;
-                this._oracleOrder.Parameters.Add("p_VILLEPARTICIPANT", OracleDbType.Varchar2).Value = ville;
-                this._oracleOrder.Parameters.Add("p_TELPARTICIPANT", OracleDbType.Varchar2).Value = tel;
-                this._oracleOrder.Parameters.Add("p_MAILPARTICIPANT", OracleDbType.Varchar2).Value = mail;               
-                this._oracleOrder.Parameters.Add("p_DATEINSCRIPTION", OracleDbType.Varchar2).Value = dateInscription;
+                this._oracleOrder.Parameters.Add("p_DATEENREGISTREMENTARRIVEE", OracleDbType.Int32).Value = id;
                 this._oracleOrder.Parameters.Add("p_DATEENREGISTREMENTARRIVEE", OracleDbType.Varchar2).Value = dateArrivee;
                 this._oracleOrder.Parameters.Add("p_CLEWIFI", OracleDbType.Varchar2).Value = cleWifi;
 
