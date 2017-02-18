@@ -6,6 +6,8 @@ using System.Configuration;
 using System.Collections.ObjectModel;
 using ComposantNuite;
 using BaseDeDonnees;
+using MaisonDesLigues.Utilitaires;
+
 namespace MaisonDesLigues
 {
     public partial class FrmPrincipale : Form
@@ -14,6 +16,8 @@ namespace MaisonDesLigues
         private String TitreApplication;
         private String IdStatutSelectionne = "";
         private Logger _logger;
+
+        
 
 
         /// <summary>
