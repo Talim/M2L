@@ -3,15 +3,7 @@ using MaterialSkin;
 using MaterialSkin.Controls;
 using Oracle.ManagedDataAccess.Client;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
 namespace M2L_Mission3
 {
     public partial class Inscription : MaterialForm
@@ -35,6 +27,8 @@ namespace M2L_Mission3
             int i = cmbBox_Participant.Text.IndexOf(":");
             int id = Int32.Parse(cmbBox_Participant.Text.Substring(0,i));
             this._connection.AddParticipant(id, dateTime_Arrive.Value.ToString(), Utilitaire.generateWifi(12));
+            QrCode unQrCode = new QrCode();
+            unQrCode.getQrCode(id.ToString());
         }
 
         private void dateTime_Inscription_ValueChanged(object sender, EventArgs e)

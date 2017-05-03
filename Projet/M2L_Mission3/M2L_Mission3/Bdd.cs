@@ -126,7 +126,7 @@ namespace BaseDeDonnees
             {
                 this._oracleOrder = new OracleCommand();
                 this._oracleOrder.Connection = this._oracleConnection;
-                this._oracleOrder.CommandText = "GERERPARTICIPANT.InsertParticipant";
+                this._oracleOrder.CommandText = "MDL.GERERPARTICIPANT.InsertParticipant";
                 this._oracleOrder.CommandType = CommandType.StoredProcedure;
                 this._oracleOrder.Parameters.Add("p_DATEENREGISTREMENTARRIVEE", OracleDbType.Int32).Value = id;
                 this._oracleOrder.Parameters.Add("p_DATEENREGISTREMENTARRIVEE", OracleDbType.Varchar2).Value = dateArrivee;

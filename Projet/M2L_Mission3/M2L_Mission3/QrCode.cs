@@ -8,18 +8,19 @@ using System.Threading.Tasks;
 
 namespace M2L_Mission3
 {
-    static class QrCode
+    public class QrCode
     {
         /// <summary>
         /// Librairie venant du package nuget : Install-Package QRCoder
         /// </summary>
         /// <param name="data"></param>
-        static void getQrCode(string data)
+        public void getQrCode(string data)
         {
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
             QRCodeData qrCodeData = qrGenerator.CreateQrCode(data, QRCodeGenerator.ECCLevel.Q);
             QRCode qrCode = new QRCode(qrCodeData);
             Bitmap qrCodeImage = qrCode.GetGraphic(20);
+            qrCodeImage.Save("../QrCode/"+data+".gif", System.Drawing.Imaging.ImageFormat.Gif);
         }
 
     }
