@@ -2,15 +2,15 @@
 {
     partial class FrmLogin
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
+        /// <summary> 
+        /// Required designer variable. 
+        /// </summary> 
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <summary> 
+        /// Clean up any resources being used. 
+        /// </summary> 
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param> 
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,17 +20,17 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Windows Form Designer generated code 
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor. 
+        /// </summary> 
         private void InitializeComponent()
         {
             this.TxtLogin = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.TxtMdp = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialCheckBox1 = new MaterialSkin.Controls.MaterialCheckBox();
+            this.chkSouvenirMdp = new MaterialSkin.Controls.MaterialCheckBox();
             this.CmdOk = new MaterialSkin.Controls.MaterialFlatButton();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -73,8 +73,9 @@
             this.TxtMdp.UseSystemPasswordChar = true;
             this.TxtMdp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMdp_KeyPress);
             // 
-            // materialCheckBox1
+            // chkSouvenirMdp
             // 
+<<<<<<< HEAD:Projet/MaisonDesLigues/FrmLogin.Designer.cs
             this.materialCheckBox1.AutoSize = true;
             this.materialCheckBox1.Checked = true;
             this.materialCheckBox1.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -91,6 +92,22 @@
             this.materialCheckBox1.Text = "Enregistrer le mot de passe";
             this.materialCheckBox1.UseVisualStyleBackColor = true;
             this.materialCheckBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMdp_KeyPress);
+=======
+            this.chkSouvenirMdp.AutoSize = true;
+            this.chkSouvenirMdp.Depth = 0;
+            this.chkSouvenirMdp.Font = new System.Drawing.Font("Roboto", 10F);
+            this.chkSouvenirMdp.Location = new System.Drawing.Point(63, 187);
+            this.chkSouvenirMdp.Margin = new System.Windows.Forms.Padding(0);
+            this.chkSouvenirMdp.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.chkSouvenirMdp.MouseState = MaterialSkin.MouseState.HOVER;
+            this.chkSouvenirMdp.Name = "chkSouvenirMdp";
+            this.chkSouvenirMdp.Ripple = true;
+            this.chkSouvenirMdp.Size = new System.Drawing.Size(198, 30);
+            this.chkSouvenirMdp.TabIndex = 3;
+            this.chkSouvenirMdp.Text = "Enregistrer le mot de passe";
+            this.chkSouvenirMdp.UseVisualStyleBackColor = true;
+            this.chkSouvenirMdp.CheckedChanged += new System.EventHandler(this.chkSouvenirMdp_CheckedChanged);
+>>>>>>> master:Projet/MaisonDesLigues/Formulaires/FrmLogin.Designer.cs
             // 
             // CmdOk
             // 
@@ -139,15 +156,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(316, 290);
             this.Controls.Add(this.CmdOk);
-            this.Controls.Add(this.materialCheckBox1);
+            this.Controls.Add(this.chkSouvenirMdp);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.TxtMdp);
             this.Controls.Add(this.TxtLogin);
+            this.MaximizeBox = false;
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Application Assises de l\'Escrime";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmLogin_FormClosing);
+            this.Load += new System.EventHandler(this.FrmLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
@@ -161,8 +180,13 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField TxtMdp;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private MaterialSkin.Controls.MaterialCheckBox materialCheckBox1;
+        private MaterialSkin.Controls.MaterialCheckBox chkSouvenirMdp;
         private MaterialSkin.Controls.MaterialFlatButton CmdOk;
+<<<<<<< HEAD:Projet/MaisonDesLigues/FrmLogin.Designer.cs
         private System.ComponentModel.BackgroundWorker loginWorker;
+=======
+
+        private FlatAlertBox notif;
+>>>>>>> master:Projet/MaisonDesLigues/Formulaires/FrmLogin.Designer.cs
     }
 }

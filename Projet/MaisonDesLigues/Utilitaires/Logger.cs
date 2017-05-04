@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MaisonDesLigues
+namespace MaisonDesLigues.Utilitaires
 {
     /// <summary>
     /// Cette classe va nous servir à faire un audit 
@@ -14,7 +14,7 @@ namespace MaisonDesLigues
     class Logger
     {
         private StringBuilder _out;
-        private StringBuilder _err;
+        private StringBuilder _err; 
         private Exception _ex;
 
 
@@ -30,7 +30,7 @@ namespace MaisonDesLigues
                                     ====================================";
 
             string cadreInitErr = @"====================================
-                                    =       Flux d'erreur standard     =
+                                    =      Flux d'erreur standard      =
                                     ====================================";
 
             _out = new StringBuilder(cadreInitOut + "\n\n");

@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 using MaisonDesLigues;
+using MaisonDesLigues.Utilitaires;
 
 
 

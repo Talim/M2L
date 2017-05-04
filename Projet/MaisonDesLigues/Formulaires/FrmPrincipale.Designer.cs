@@ -379,9 +379,10 @@
             // PicAffiche
             // 
             this.PicAffiche.Image = global::MaisonDesLigues.Properties.Resources.affiche;
-            this.PicAffiche.Location = new System.Drawing.Point(493, 6);
+            this.PicAffiche.Location = new System.Drawing.Point(493, 23);
             this.PicAffiche.Name = "PicAffiche";
-            this.PicAffiche.Size = new System.Drawing.Size(108, 164);
+            this.PicAffiche.Size = new System.Drawing.Size(108, 160);
+            this.PicAffiche.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PicAffiche.TabIndex = 5;
             this.PicAffiche.TabStop = false;
             // 

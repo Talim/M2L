@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using System.Data;
 using BaseDeDonnees;
 
-namespace MaisonDesLigues
+namespace MaisonDesLigues.Utilitaires
 {
     internal abstract class Utilitaire
     {

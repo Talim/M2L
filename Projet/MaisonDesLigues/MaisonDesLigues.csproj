@@ -69,6 +69,9 @@
     <Reference Include="Oracle.ManagedDataAccess">
       <HintPath>..\packages\Oracle.ManagedDataAccess.12.1.24160719\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
     </Reference>
+    <Reference Include="Shadow">
+      <HintPath>..\packages\ShadowLayout\Shadow.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -83,54 +86,49 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bdd.cs" />
-    <Compile Include="FormNotif.cs">
+    <Compile Include="Formulaires\FrmAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormNotif.Designer.cs">
-      <DependentUpon>FormNotif.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmAdd.designer.cs">
+    <Compile Include="Formulaires\FrmAdd.designer.cs">
       <DependentUpon>FrmAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmMain.cs">
+    <Compile Include="Formulaires\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmMain.Designer.cs">
-      <DependentUpon>FrmMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Logger.cs" />
-    <Compile Include="Notification.cs" />
-    <Compile Include="Utilitaire.cs" />
-    <Compile Include="FrmLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmLogin.designer.cs">
+    <Compile Include="Formulaires\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmPrincipale.cs">
+    <Compile Include="Formulaires\FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmPrincipale.Designer.cs">
+    <Compile Include="Formulaires\FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionRegistre.cs" />
+    <Compile Include="Utilitaires\Logger.cs" />
+    <Compile Include="Controles\Notification.cs" />
+    <Compile Include="Utilitaires\ShadowWrapper.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Utilitaires\Utilitaire.cs" />
+    <Compile Include="Formulaires\FrmPrincipale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulaires\FrmPrincipale.Designer.cs">
       <DependentUpon>FrmPrincipale.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormNotif.resx">
-      <DependentUpon>FormNotif.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmAdd.resx">
+    <EmbeddedResource Include="Formulaires\FrmAdd.resx">
       <DependentUpon>FrmAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmLogin.resx">
+    <EmbeddedResource Include="Formulaires\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmMain.resx">
+    <EmbeddedResource Include="Formulaires\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmPrincipale.resx">
+    <EmbeddedResource Include="Formulaires\FrmPrincipale.resx">
       <DependentUpon>FrmPrincipale.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -190,6 +188,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
