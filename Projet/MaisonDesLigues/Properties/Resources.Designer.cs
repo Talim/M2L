@@ -109,5 +109,25 @@ namespace MaisonDesLigues.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mdl_sans_fond {
+            get {
+                object obj = ResourceManager.GetObject("mdl_sans_fond", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mdl_sans_fond_sans_texte {
+            get {
+                object obj = ResourceManager.GetObject("mdl_sans_fond_sans_texte", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

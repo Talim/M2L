@@ -52,7 +52,6 @@
             this.TxtLogin.SelectionStart = 0;
             this.TxtLogin.Size = new System.Drawing.Size(232, 23);
             this.TxtLogin.TabIndex = 0;
-            this.TxtLogin.Text = "mdl";
             this.TxtLogin.UseSystemPasswordChar = false;
             this.TxtLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMdp_KeyPress);
             // 
@@ -69,30 +68,11 @@
             this.TxtMdp.SelectionStart = 0;
             this.TxtMdp.Size = new System.Drawing.Size(232, 23);
             this.TxtMdp.TabIndex = 1;
-            this.TxtMdp.Text = "mdl";
             this.TxtMdp.UseSystemPasswordChar = true;
             this.TxtMdp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMdp_KeyPress);
             // 
             // chkSouvenirMdp
             // 
-<<<<<<< HEAD:Projet/MaisonDesLigues/FrmLogin.Designer.cs
-            this.materialCheckBox1.AutoSize = true;
-            this.materialCheckBox1.Checked = true;
-            this.materialCheckBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.materialCheckBox1.Depth = 0;
-            this.materialCheckBox1.Font = new System.Drawing.Font("Roboto", 10F);
-            this.materialCheckBox1.Location = new System.Drawing.Point(63, 187);
-            this.materialCheckBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.materialCheckBox1.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialCheckBox1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialCheckBox1.Name = "materialCheckBox1";
-            this.materialCheckBox1.Ripple = true;
-            this.materialCheckBox1.Size = new System.Drawing.Size(198, 30);
-            this.materialCheckBox1.TabIndex = 3;
-            this.materialCheckBox1.Text = "Enregistrer le mot de passe";
-            this.materialCheckBox1.UseVisualStyleBackColor = true;
-            this.materialCheckBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMdp_KeyPress);
-=======
             this.chkSouvenirMdp.AutoSize = true;
             this.chkSouvenirMdp.Depth = 0;
             this.chkSouvenirMdp.Font = new System.Drawing.Font("Roboto", 10F);
@@ -106,15 +86,13 @@
             this.chkSouvenirMdp.TabIndex = 3;
             this.chkSouvenirMdp.Text = "Enregistrer le mot de passe";
             this.chkSouvenirMdp.UseVisualStyleBackColor = true;
-            this.chkSouvenirMdp.CheckedChanged += new System.EventHandler(this.chkSouvenirMdp_CheckedChanged);
->>>>>>> master:Projet/MaisonDesLigues/Formulaires/FrmLogin.Designer.cs
             // 
             // CmdOk
             // 
             this.CmdOk.AutoSize = true;
             this.CmdOk.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CmdOk.Depth = 0;
-            this.CmdOk.Location = new System.Drawing.Point(180, 235);
+            this.CmdOk.Location = new System.Drawing.Point(117, 235);
             this.CmdOk.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.CmdOk.MouseState = MaterialSkin.MouseState.HOVER;
             this.CmdOk.Name = "CmdOk";
@@ -163,6 +141,7 @@
             this.Controls.Add(this.TxtLogin);
             this.MaximizeBox = false;
             this.Name = "FrmLogin";
+            this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Application Assises de l\'Escrime";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmLogin_FormClosing);
@@ -182,11 +161,8 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private MaterialSkin.Controls.MaterialCheckBox chkSouvenirMdp;
         private MaterialSkin.Controls.MaterialFlatButton CmdOk;
-<<<<<<< HEAD:Projet/MaisonDesLigues/FrmLogin.Designer.cs
         private System.ComponentModel.BackgroundWorker loginWorker;
-=======
 
         private FlatAlertBox notif;
->>>>>>> master:Projet/MaisonDesLigues/Formulaires/FrmLogin.Designer.cs
     }
 }

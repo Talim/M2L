@@ -31,7 +31,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -58,6 +58,26 @@
   <PropertyGroup>
     <ApplicationIcon>Mdl.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>bin\Debug\MaisonDesLigues.xml</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ComposantNuite, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -69,12 +89,13 @@
     <Reference Include="Oracle.ManagedDataAccess">
       <HintPath>..\packages\Oracle.ManagedDataAccess.12.1.24160719\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
     </Reference>
-    <Reference Include="Shadow">
-      <HintPath>..\packages\ShadowLayout\Shadow.dll</HintPath>
+    <Reference Include="ShadowLib">
+      <HintPath>..\packages\Shadow\ShadowLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -107,9 +128,6 @@
     <Compile Include="GestionRegistre.cs" />
     <Compile Include="Utilitaires\Logger.cs" />
     <Compile Include="Controles\Notification.cs" />
-    <Compile Include="Utilitaires\ShadowWrapper.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Utilitaires\Utilitaire.cs" />
     <Compile Include="Formulaires\FrmPrincipale.cs">
       <SubType>Form</SubType>
@@ -157,6 +175,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Mdl.ico" />
+    <None Include="Ressources\mdl_sans_fond_sans_texte.gif" />
+    <None Include="Ressources\mdl_sans_fond.gif" />
     <None Include="Ressources\Lock-32.png" />
     <None Include="Ressources\Contacts Filled-32.png" />
     <None Include="Ressources\Mdl.png" />

@@ -8,6 +8,20 @@ namespace MaisonDesLigues.Utilitaires
     internal abstract class Utilitaire
     {
 
+        public static string GenererAleatoire(int taille)
+        {
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789&é'(-è_çà)=°+";
+            var stringChars = new char[taille];
+            var random = new Random();
+
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+
+            return new String(stringChars);
+        }
+
         /// <summary>
         /// Permet de construire une chaine en format HH:MI avec grace a une chaine en format "DD/MM/YYY HH:MI"
         /// </summary>

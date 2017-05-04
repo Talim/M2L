@@ -9,13 +9,10 @@ using BaseDeDonnees;
 using System.Configuration;
 using MaterialSkin.Controls;
 using MaterialSkin;
-<<<<<<< HEAD:Projet/MaisonDesLigues/FrmLogin.cs
 using System.Threading;
-=======
 using Shadow;
 using Microsoft.Win32;
 using MaisonDesLigues.Utilitaires;
->>>>>>> master:Projet/MaisonDesLigues/Formulaires/FrmLogin.cs
 
 namespace MaisonDesLigues
 {
@@ -26,18 +23,11 @@ namespace MaisonDesLigues
         internal Bdd connection;
         internal String TitreApplication;
 
-        private ShadowWrapper _ombre;
-
-<<<<<<< HEAD:Projet/MaisonDesLigues/FrmLogin.cs
+        private Dropshadow _ombre;
+        
         /// <summary>
         /// Constructeur
         /// </summary>
-=======
-
-        /// <summary> 
-        /// constructeur 
-        /// </summary> 
->>>>>>> master:Projet/MaisonDesLigues/Formulaires/FrmLogin.cs
         public FrmLogin()
         {
             InitializeComponent();
@@ -47,6 +37,7 @@ namespace MaisonDesLigues
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
             notif = new FlatAlertBox();
             
+            
         }
 
         /// <summary> 
@@ -54,22 +45,17 @@ namespace MaisonDesLigues
         /// </summary> 
         private void Login()
         {
-<<<<<<< HEAD:Projet/MaisonDesLigues/FrmLogin.cs
             //Notification.ShowNotification(this, "test", "test", 1000);
-=======
->>>>>>> master:Projet/MaisonDesLigues/Formulaires/FrmLogin.cs
+            SouvenirChk();
             if (this.TxtLogin.Text != "" && this.TxtMdp.Text != "")
             {
                 try
                 {
                     this.connection = new Bdd(TxtLogin.Text, TxtMdp.Text);
-<<<<<<< HEAD:Projet/MaisonDesLigues/FrmLogin.cs
-
-=======
-                    (new FrmAdd()).Show(this);
-                    //(new FrmPrincipale()).Show(this); 
+                    
+                    //(new FrmAdd()).Show(this);
+                    (new FrmPrincipale()).Show(this); 
                     this.Hide();
->>>>>>> master:Projet/MaisonDesLigues/Formulaires/FrmLogin.cs
                 }
                 catch (Exception ex)
                 {
@@ -78,37 +64,40 @@ namespace MaisonDesLigues
             }
         }
 
-<<<<<<< HEAD:Projet/MaisonDesLigues/FrmLogin.cs
+        private void SouvenirChk()
+        {
+            try
+            {
+                if (chkSouvenirMdp.Checked)
+                    GestionRegistre.CreerSauvegardeMdp(TxtLogin.Text, TxtMdp.Text);
+                else
+                    GestionRegistre.SupprimerSauvegardeMdp();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+        
         /// <summary>
         /// Gestion événement click sur le bonton ok
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-=======
-        /// <summary> 
-        /// gestion événement click sur le bonton ok 
-        /// </summary> 
-        /// <param name="sender"></param> 
-        /// <param name="e"></param> 
->>>>>>> master:Projet/MaisonDesLigues/Formulaires/FrmLogin.cs
         private void CmdOk_Click(object sender, EventArgs e)
         {
             CmdOk.Text = "Connexion...";
+            if (chkSouvenirMdp.Checked)
+                GestionRegistre.CreerSauvegardeMdp(TxtLogin.Text, TxtMdp.Text);
             loginWorker.RunWorkerAsync();
         }
-<<<<<<< HEAD:Projet/MaisonDesLigues/FrmLogin.cs
+
         /// <summary>
         /// Gestion de l'activation/désactivation du bouton ok
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-=======
-        /// <summary> 
-        /// gestion de l'activation/désactivation du bouton ok 
-        /// </summary> 
-        /// <param name="sender"></param> 
-        /// <param name="e"></param> 
->>>>>>> master:Projet/MaisonDesLigues/Formulaires/FrmLogin.cs
         private void ControleValide(object sender, EventArgs e)
         {
             if (TxtLogin.Text.Length == 0 || TxtMdp.Text.Length == 0)
@@ -120,7 +109,26 @@ namespace MaisonDesLigues
         private void FrmLogin_Load(object sender, EventArgs e)
         {
             //this.ControleValide(sender, e);
-            _ombre = new ShadowWrapper(this);
+
+            if (!DesignMode)
+            {
+                _ombre = new Dropshadow(this)
+                {
+                    ShadowBlur = 10,
+                    ShadowSpread = -4,
+                    ShadowColor = Color.FromArgb(33, 33, 33)
+                };
+                _ombre.RefreshShadow();
+                _ombre.Refresh();
+            }
+
+
+            if (GestionRegistre.VerifierCle())
+            {
+                chkSouvenirMdp.Checked = true;
+                TxtLogin.Text = GestionRegistre.GetLogin();
+                TxtMdp.Text = GestionRegistre.GetPass();
+            }
 
         }
 
@@ -136,18 +144,13 @@ namespace MaisonDesLigues
         /// <param name="e"></param>
         private void TxtMdp_KeyPress(object sender, KeyPressEventArgs e)
         {
-<<<<<<< HEAD:Projet/MaisonDesLigues/FrmLogin.cs
-            if(e.KeyChar == (char)Keys.Enter)
-=======
             if (e.KeyChar == (char)Keys.Enter)
->>>>>>> master:Projet/MaisonDesLigues/Formulaires/FrmLogin.cs
             {
                 CmdOk.Text = "Connexion...";
                 loginWorker.RunWorkerAsync();
             }
         }
-
-<<<<<<< HEAD:Projet/MaisonDesLigues/FrmLogin.cs
+        
         /// <summary>
         /// Methode de calcul du BackgroundWorker
         /// </summary>
@@ -166,22 +169,14 @@ namespace MaisonDesLigues
         private void loginWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             CmdOk.Text = "Identification";
-            (new FrmAdd()).Show(this);
-            //(new FrmPrincipale()).Show(this);
+            if (chkSouvenirMdp.Checked)
+                GestionRegistre.CreerSauvegardeMdp(TxtLogin.Text, TxtMdp.Text);
+            //(new FrmAdd()).Show(this);
+            (new FrmMain()).Show(this);
             this.Hide();
             loginWorker.CancelAsync();
             loginWorker.Dispose();
         }
-=======
-        private void chkSouvenirMdp_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkSouvenirMdp.Checked)
-                GestionRegistre.CreerSauvegardeMdp();
-            else
-                GestionRegistre.SupprimerSauvegardeMdp();
-        }
-
-
->>>>>>> master:Projet/MaisonDesLigues/Formulaires/FrmLogin.cs
+        
     }
 }
