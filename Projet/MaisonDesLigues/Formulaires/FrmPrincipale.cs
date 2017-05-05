@@ -192,8 +192,8 @@ namespace MaisonDesLigues
                     foreach (KeyValuePair<Int16, String> UneNuite in LesNuites)
                     {
                         ComposantNuite.ResaNuite unResaNuit = new ResaNuite(UneConnexion.ObtenirDonnesOracle("VHOTEL01"), (UneConnexion.ObtenirDonnesOracle("VCATEGORIECHAMBRE01")), UneNuite.Value, UneNuite.Key);
-                        unResaNuit.Left = 5;
-                        unResaNuit.Top = 5 + (24 * i++);
+                        unResaNuit.Left = 0;
+                        unResaNuit.Top = 0 + (24 * i++);
                         unResaNuit.Visible = true;
                         //unResaNuit.click += new System.EventHandler(ComposantNuite_StateChanged);
                         PanNuiteIntervenant.Controls.Add(unResaNuit);

@@ -65,7 +65,7 @@ namespace MaisonDesLigues.Utilitaires
             UnControleAPlacer.Width = 320;
             UnControleAPlacer.Text = UneLigne[1].ToString();
             UnControleAPlacer.Left = 13;
-            UnControleAPlacer.Top = 5 +(10 * i);
+            UnControleAPlacer.Top = 5 +(15 * i);
             UnControleAPlacer.Visible = true;                  
             System.Type UnType = UneForme.GetType();
             //((UnType)UneForme).
@@ -120,13 +120,13 @@ namespace MaisonDesLigues.Utilitaires
                   
                 if (unTypeControle == "CheckBox")
                 {
-                    CheckBox UnControle = new CheckBox();
+                    MaterialSkin.Controls.MaterialCheckBox UnControle = new MaterialSkin.Controls.MaterialCheckBox();
                     AffecterControle(UneForme, UnPanel, UnControle, pPrefixe, UneLigne, i++, callback);     
               
                 }
                 else if (unTypeControle == "RadioButton")
                 {
-                    RadioButton UnControle = new RadioButton();
+                    MaterialSkin.Controls.MaterialRadioButton UnControle = new MaterialSkin.Controls.MaterialRadioButton();
                     AffecterControle(UneForme, UnPanel, UnControle, pPrefixe, UneLigne, i++, callback);
                     UnControle.CheckedChanged += new System.EventHandler(callback);
                 }
