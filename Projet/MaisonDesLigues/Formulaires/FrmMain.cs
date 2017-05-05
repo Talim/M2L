@@ -113,13 +113,16 @@ namespace MaisonDesLigues
                     MessageBox.Show("Inscription intervenant effectuée");
 
                 }
-                foreach (Control crt in this.Controls)
+                //REMISE A ZERO
+                foreach (Control crt in GpbIdentité.Controls)
                 {
-                    if (crt.GetType() == typeof(TextBox))
+                    if (crt.GetType() == typeof(MaterialSingleLineTextField))
                     {
                         crt.Text = "";
                     }
                 }
+                RdoNuitéNon.Checked = true;
+
 
             }
             catch (Exception Ex)
