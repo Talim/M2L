@@ -65,6 +65,17 @@ namespace MaisonDesLigues
             Utilitaire.RemplirComboBox(UneConnexion, CmbAtelier, "VATELIER01");
             Utilitaire.CreerDesControles(this, UneConnexion, "VSTATUT01", "Rad_", PnlType, "RadioButton", this.rdbStatutIntervenant_StateChanged);
 
+            Utilitaire.CreerDesControles(this, UneConnexion, "VDATEBENEVOLAT01", "ChkDateB_", panel2, "CheckBox", this.rdbStatutIntervenant_StateChanged);
+            // on va tester si le controle à placer est de type CheckBox afin de lui placer un événement checked_changed
+            // Ceci afin de désactiver les boutons si aucune case à cocher du container n'est cochée
+            foreach (Control UnControle in panel2.Controls)
+            {
+                if (UnControle.GetType().Name == "CheckBox")
+                {
+                    CheckBox UneCheckBox = (CheckBox)UnControle;
+                }
+            }
+
 
         }
 
@@ -74,7 +85,31 @@ namespace MaisonDesLigues
             this.IdStatutSelectionne = ((RadioButton)sender).Name.Split('_')[1];
         }
 
-        private void BtnEnregistrer_Click(object sender, EventArgs e)
+
+        private void InscrireBenevole()
+        {
+            Collection<Int16> IdDatesSelectionnees = new Collection<Int16>();
+            Int64? NumeroLicence;
+
+            NumeroLicence = System.Convert.ToInt64(txtLicence.Text);
+
+            foreach (Control UnControle in panel2.Controls)
+            {
+                if (UnControle.GetType().Name == "CheckBox" && ((CheckBox)UnControle).Checked)
+                {
+                    /* Un name de controle est toujours formé come ceci : xxx_Id où id représente l'id dans la table
+                     * Donc on splite la chaine et on récupére le deuxième élément qui correspond à l'id de l'élément sélectionné.
+                     * on rajoute cet id dans la collection des id des dates sélectionnées
+                        
+                    */
+                    IdDatesSelectionnees.Add(System.Convert.ToInt16((UnControle.Name.Split('_'))[1]));
+                }
+            }
+            UneConnexion.InscrireBenevole(TxtNom.Text, TxtPrenom.Text, TxtAdresse.Text, TxtAdresse2.Text != "" ? TxtAdresse2.Text : null, TxtCp.Text, TxtVille.Text, TxtTel.Text , TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToDateTime(txtNaissance.Text), NumeroLicence, IdDatesSelectionnees);
+
+        }
+
+        private void InscrireIntervenant()
         {
             // inscription avec les nuitées
             try
@@ -128,6 +163,19 @@ namespace MaisonDesLigues
             catch (Exception Ex)
             {
                 MessageBox.Show(Ex.Message);
+            }
+        }
+
+        private void BtnEnregistrer_Click(object sender, EventArgs e)
+        {
+            switch (TabType.SelectedTab.Text)
+            {
+                case "Intervenant":
+                    InscrireIntervenant();
+                    break;
+                case "Bénévole":
+                    InscrireBenevole();
+                    break;
             }
         }
 

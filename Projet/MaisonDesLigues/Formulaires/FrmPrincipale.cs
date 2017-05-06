@@ -169,7 +169,7 @@ namespace MaisonDesLigues
         /// <param name="e"></param>
         private void ChkDateBenevole_CheckedChanged(object sender, EventArgs e)
         {
-            BtnEnregistreBenevole.Enabled = (TxtLicenceBenevole.Text == "" || TxtLicenceBenevole.MaskCompleted) && TxtDateNaissance.MaskCompleted && Utilitaire.CompteChecked(PanelDispoBenevole) > 0;
+            BtnEnregistreBenevole.Enabled = true;// (TxtLicenceBenevole.Text == "" || TxtLicenceBenevole.MaskCompleted) && TxtDateNaissance.MaskCompleted && Utilitaire.CompteChecked(PanelDispoBenevole) > 0;
         }
         /// <summary>
         /// Méthode qui permet d'afficher ou masquer le controle panel permettant la saisie des nuités d'un intervenant.

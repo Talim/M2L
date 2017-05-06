@@ -113,7 +113,6 @@
             // 
             // BtnEnregistreBenevole
             // 
-            this.BtnEnregistreBenevole.Enabled = false;
             this.BtnEnregistreBenevole.Location = new System.Drawing.Point(321, 143);
             this.BtnEnregistreBenevole.Name = "BtnEnregistreBenevole";
             this.BtnEnregistreBenevole.Size = new System.Drawing.Size(133, 25);

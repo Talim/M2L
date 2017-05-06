@@ -173,7 +173,7 @@ namespace MaisonDesLigues
             if (chkSouvenirMdp.Checked)
                 GestionRegistre.CreerSauvegardeMdp(TxtLogin.Text, TxtMdp.Text);
             //(new FrmAdd()).Show(this);
-            (new FrmMain()).Show(this);
+            (new FrmPrincipale()).Show(this);
             this.Hide();
             loginWorker.CancelAsync();
             loginWorker.Dispose();

@@ -29,16 +29,26 @@
         private void InitializeComponent()
         {
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
-            this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
+            this.TabType = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.BtnQuitter = new MaterialSkin.Controls.MaterialFlatButton();
-            this.CmbAtelier = new System.Windows.Forms.ComboBox();
-            this.PnlType = new System.Windows.Forms.Panel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.PnlNuite = new System.Windows.Forms.Panel();
             this.RdoNuitéNon = new MaterialSkin.Controls.MaterialRadioButton();
             this.RdoNuitéOui = new MaterialSkin.Controls.MaterialRadioButton();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.CmbAtelier = new System.Windows.Forms.ComboBox();
             this.lblAtelier = new MaterialSkin.Controls.MaterialLabel();
+            this.PnlType = new System.Windows.Forms.Panel();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
+            this.txtNaissance = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.txtLicence = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.BtnQuitter = new MaterialSkin.Controls.MaterialFlatButton();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.TxtMail = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.TxtTel = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.TxtVille = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -53,34 +63,24 @@
             this.LblPrenom = new MaterialSkin.Controls.MaterialLabel();
             this.LblAdresse = new MaterialSkin.Controls.MaterialLabel();
             this.LblNom = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialSingleLineTextField8 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField9 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.GpbIdentité = new System.Windows.Forms.GroupBox();
-            this.BtnEnregistrer = new MaterialSkin.Controls.MaterialFlatButton();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.PnlNuite = new System.Windows.Forms.Panel();
             this.TxtAdresse2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialTabControl1.SuspendLayout();
+            this.BtnEnregistrer = new MaterialSkin.Controls.MaterialFlatButton();
+            this.TabType.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.GpbIdentité.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.GpbIdentité.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialTabSelector1
             // 
-            this.materialTabSelector1.BaseTabControl = this.materialTabControl1;
+            this.materialTabSelector1.BaseTabControl = this.TabType;
             this.materialTabSelector1.Depth = 0;
             this.materialTabSelector1.Location = new System.Drawing.Point(0, 64);
             this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -89,18 +89,18 @@
             this.materialTabSelector1.TabIndex = 0;
             this.materialTabSelector1.Text = "materialTabSelector1";
             // 
-            // materialTabControl1
+            // TabType
             // 
-            this.materialTabControl1.Controls.Add(this.tabPage1);
-            this.materialTabControl1.Controls.Add(this.tabPage2);
-            this.materialTabControl1.Controls.Add(this.tabPage3);
-            this.materialTabControl1.Depth = 0;
-            this.materialTabControl1.Location = new System.Drawing.Point(475, 109);
-            this.materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialTabControl1.Name = "materialTabControl1";
-            this.materialTabControl1.SelectedIndex = 0;
-            this.materialTabControl1.Size = new System.Drawing.Size(710, 423);
-            this.materialTabControl1.TabIndex = 1;
+            this.TabType.Controls.Add(this.tabPage1);
+            this.TabType.Controls.Add(this.tabPage2);
+            this.TabType.Controls.Add(this.tabPage3);
+            this.TabType.Depth = 0;
+            this.TabType.Location = new System.Drawing.Point(475, 109);
+            this.TabType.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TabType.Name = "TabType";
+            this.TabType.SelectedIndex = 0;
+            this.TabType.Size = new System.Drawing.Size(710, 423);
+            this.TabType.TabIndex = 1;
             // 
             // tabPage1
             // 
@@ -114,49 +114,39 @@
             this.tabPage1.Text = "Intervenant";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
-            // BtnQuitter
+            // groupBox3
             // 
-            this.BtnQuitter.AutoSize = true;
-            this.BtnQuitter.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BtnQuitter.Depth = 0;
-            this.BtnQuitter.Location = new System.Drawing.Point(265, 486);
-            this.BtnQuitter.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.BtnQuitter.MouseState = MaterialSkin.MouseState.HOVER;
-            this.BtnQuitter.Name = "BtnQuitter";
-            this.BtnQuitter.Primary = false;
-            this.BtnQuitter.Size = new System.Drawing.Size(204, 36);
-            this.BtnQuitter.TabIndex = 18;
-            this.BtnQuitter.Text = "=> Quitter l\'application <=";
-            this.BtnQuitter.UseVisualStyleBackColor = true;
-            // 
-            // CmbAtelier
-            // 
-            this.CmbAtelier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CmbAtelier.FormattingEnabled = true;
-            this.CmbAtelier.Location = new System.Drawing.Point(72, 34);
-            this.CmbAtelier.Name = "CmbAtelier";
-            this.CmbAtelier.Size = new System.Drawing.Size(265, 27);
-            this.CmbAtelier.TabIndex = 26;
-            // 
-            // PnlType
-            // 
-            this.PnlType.Location = new System.Drawing.Point(13, 75);
-            this.PnlType.Name = "PnlType";
-            this.PnlType.Size = new System.Drawing.Size(168, 71);
-            this.PnlType.TabIndex = 25;
+            this.groupBox3.Controls.Add(this.groupBox2);
+            this.groupBox3.Controls.Add(this.CmbAtelier);
+            this.groupBox3.Controls.Add(this.lblAtelier);
+            this.groupBox3.Controls.Add(this.PnlType);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.groupBox3.Location = new System.Drawing.Point(6, 7);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(686, 384);
+            this.groupBox3.TabIndex = 20;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Complément d\'inscription des Intervenants";
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.PnlNuite);
             this.groupBox2.Controls.Add(this.RdoNuitéNon);
             this.groupBox2.Controls.Add(this.RdoNuitéOui);
-            this.groupBox2.Font = new System.Drawing.Font("Roboto", 11F);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.groupBox2.Location = new System.Drawing.Point(13, 163);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(663, 215);
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Nuités";
+            // 
+            // PnlNuite
+            // 
+            this.PnlNuite.Location = new System.Drawing.Point(16, 58);
+            this.PnlNuite.Name = "PnlNuite";
+            this.PnlNuite.Size = new System.Drawing.Size(636, 147);
+            this.PnlNuite.TabIndex = 26;
             // 
             // RdoNuitéNon
             // 
@@ -194,15 +184,14 @@
             this.RdoNuitéOui.UseVisualStyleBackColor = true;
             this.RdoNuitéOui.CheckedChanged += new System.EventHandler(this.RdbNuiteIntervenant_CheckedChanged);
             // 
-            // pictureBox2
+            // CmbAtelier
             // 
-            this.pictureBox2.Image = global::MaisonDesLigues.Properties.Resources.logo;
-            this.pictureBox2.Location = new System.Drawing.Point(175, 347);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(294, 127);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox2.TabIndex = 24;
-            this.pictureBox2.TabStop = false;
+            this.CmbAtelier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbAtelier.FormattingEnabled = true;
+            this.CmbAtelier.Location = new System.Drawing.Point(72, 34);
+            this.CmbAtelier.Name = "CmbAtelier";
+            this.CmbAtelier.Size = new System.Drawing.Size(265, 26);
+            this.CmbAtelier.TabIndex = 26;
             // 
             // lblAtelier
             // 
@@ -216,6 +205,136 @@
             this.lblAtelier.Size = new System.Drawing.Size(57, 19);
             this.lblAtelier.TabIndex = 17;
             this.lblAtelier.Text = "Atelier:";
+            // 
+            // PnlType
+            // 
+            this.PnlType.Location = new System.Drawing.Point(13, 75);
+            this.PnlType.Name = "PnlType";
+            this.PnlType.Size = new System.Drawing.Size(168, 71);
+            this.PnlType.TabIndex = 25;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(702, 397);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Licencié";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.Color.White;
+            this.tabPage3.Controls.Add(this.groupBox1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(702, 397);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Bénévole";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.materialLabel13);
+            this.groupBox1.Controls.Add(this.materialLabel12);
+            this.groupBox1.Controls.Add(this.txtNaissance);
+            this.groupBox1.Controls.Add(this.panel2);
+            this.groupBox1.Controls.Add(this.txtLicence);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.groupBox1.Location = new System.Drawing.Point(6, 7);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(369, 307);
+            this.groupBox1.TabIndex = 20;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Nuités";
+            // 
+            // materialLabel13
+            // 
+            this.materialLabel13.AutoSize = true;
+            this.materialLabel13.Depth = 0;
+            this.materialLabel13.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel13.Location = new System.Drawing.Point(18, 83);
+            this.materialLabel13.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel13.Name = "materialLabel13";
+            this.materialLabel13.Size = new System.Drawing.Size(139, 19);
+            this.materialLabel13.TabIndex = 22;
+            this.materialLabel13.Text = "Numéro de licence:";
+            // 
+            // materialLabel12
+            // 
+            this.materialLabel12.AutoSize = true;
+            this.materialLabel12.Depth = 0;
+            this.materialLabel12.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel12.Location = new System.Drawing.Point(18, 35);
+            this.materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel12.Name = "materialLabel12";
+            this.materialLabel12.Size = new System.Drawing.Size(136, 19);
+            this.materialLabel12.TabIndex = 20;
+            this.materialLabel12.Text = "Date de naissance:";
+            // 
+            // txtNaissance
+            // 
+            this.txtNaissance.Depth = 0;
+            this.txtNaissance.Hint = "";
+            this.txtNaissance.Location = new System.Drawing.Point(163, 35);
+            this.txtNaissance.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtNaissance.Name = "txtNaissance";
+            this.txtNaissance.PasswordChar = '\0';
+            this.txtNaissance.SelectedText = "";
+            this.txtNaissance.SelectionLength = 0;
+            this.txtNaissance.SelectionStart = 0;
+            this.txtNaissance.Size = new System.Drawing.Size(177, 23);
+            this.txtNaissance.TabIndex = 21;
+            this.txtNaissance.UseSystemPasswordChar = false;
+            // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(22, 140);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(318, 115);
+            this.panel2.TabIndex = 26;
+            // 
+            // txtLicence
+            // 
+            this.txtLicence.Depth = 0;
+            this.txtLicence.Hint = "";
+            this.txtLicence.Location = new System.Drawing.Point(163, 83);
+            this.txtLicence.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtLicence.Name = "txtLicence";
+            this.txtLicence.PasswordChar = '\0';
+            this.txtLicence.SelectedText = "";
+            this.txtLicence.SelectionLength = 0;
+            this.txtLicence.SelectionStart = 0;
+            this.txtLicence.Size = new System.Drawing.Size(177, 23);
+            this.txtLicence.TabIndex = 23;
+            this.txtLicence.UseSystemPasswordChar = false;
+            // 
+            // BtnQuitter
+            // 
+            this.BtnQuitter.AutoSize = true;
+            this.BtnQuitter.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BtnQuitter.Depth = 0;
+            this.BtnQuitter.Location = new System.Drawing.Point(265, 486);
+            this.BtnQuitter.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.BtnQuitter.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BtnQuitter.Name = "BtnQuitter";
+            this.BtnQuitter.Primary = false;
+            this.BtnQuitter.Size = new System.Drawing.Size(204, 36);
+            this.BtnQuitter.TabIndex = 18;
+            this.BtnQuitter.Text = "=> Quitter l\'application <=";
+            this.BtnQuitter.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::MaisonDesLigues.Properties.Resources.logo;
+            this.pictureBox2.Location = new System.Drawing.Point(175, 347);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(294, 127);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.TabIndex = 24;
+            this.pictureBox2.TabStop = false;
             // 
             // TxtMail
             // 
@@ -413,89 +532,6 @@
             this.LblNom.TabIndex = 1;
             this.LblNom.Text = "Nom: ";
             // 
-            // materialLabel13
-            // 
-            this.materialLabel13.AutoSize = true;
-            this.materialLabel13.Depth = 0;
-            this.materialLabel13.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel13.Location = new System.Drawing.Point(18, 83);
-            this.materialLabel13.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel13.Name = "materialLabel13";
-            this.materialLabel13.Size = new System.Drawing.Size(139, 19);
-            this.materialLabel13.TabIndex = 22;
-            this.materialLabel13.Text = "Numéro de licence:";
-            // 
-            // panel2
-            // 
-            this.panel2.Location = new System.Drawing.Point(22, 140);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(318, 115);
-            this.panel2.TabIndex = 26;
-            // 
-            // materialLabel12
-            // 
-            this.materialLabel12.AutoSize = true;
-            this.materialLabel12.Depth = 0;
-            this.materialLabel12.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel12.Location = new System.Drawing.Point(18, 35);
-            this.materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel12.Name = "materialLabel12";
-            this.materialLabel12.Size = new System.Drawing.Size(136, 19);
-            this.materialLabel12.TabIndex = 20;
-            this.materialLabel12.Text = "Date de naissance:";
-            // 
-            // materialSingleLineTextField8
-            // 
-            this.materialSingleLineTextField8.Depth = 0;
-            this.materialSingleLineTextField8.Hint = "";
-            this.materialSingleLineTextField8.Location = new System.Drawing.Point(163, 35);
-            this.materialSingleLineTextField8.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField8.Name = "materialSingleLineTextField8";
-            this.materialSingleLineTextField8.PasswordChar = '\0';
-            this.materialSingleLineTextField8.SelectedText = "";
-            this.materialSingleLineTextField8.SelectionLength = 0;
-            this.materialSingleLineTextField8.SelectionStart = 0;
-            this.materialSingleLineTextField8.Size = new System.Drawing.Size(177, 23);
-            this.materialSingleLineTextField8.TabIndex = 21;
-            this.materialSingleLineTextField8.UseSystemPasswordChar = false;
-            // 
-            // materialSingleLineTextField9
-            // 
-            this.materialSingleLineTextField9.Depth = 0;
-            this.materialSingleLineTextField9.Hint = "";
-            this.materialSingleLineTextField9.Location = new System.Drawing.Point(163, 83);
-            this.materialSingleLineTextField9.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField9.Name = "materialSingleLineTextField9";
-            this.materialSingleLineTextField9.PasswordChar = '\0';
-            this.materialSingleLineTextField9.SelectedText = "";
-            this.materialSingleLineTextField9.SelectionLength = 0;
-            this.materialSingleLineTextField9.SelectionStart = 0;
-            this.materialSingleLineTextField9.Size = new System.Drawing.Size(177, 23);
-            this.materialSingleLineTextField9.TabIndex = 23;
-            this.materialSingleLineTextField9.UseSystemPasswordChar = false;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(470, 376);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Licencié";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.groupBox1);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(470, 376);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Bénévole";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
@@ -506,21 +542,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.materialLabel13);
-            this.groupBox1.Controls.Add(this.materialLabel12);
-            this.groupBox1.Controls.Add(this.materialSingleLineTextField8);
-            this.groupBox1.Controls.Add(this.panel2);
-            this.groupBox1.Controls.Add(this.materialSingleLineTextField9);
-            this.groupBox1.Font = new System.Drawing.Font("Roboto", 11F);
-            this.groupBox1.Location = new System.Drawing.Point(6, 7);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(369, 307);
-            this.groupBox1.TabIndex = 20;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Nuités";
             // 
             // GpbIdentité
             // 
@@ -539,13 +560,28 @@
             this.GpbIdentité.Controls.Add(this.LblTel);
             this.GpbIdentité.Controls.Add(this.TxtVille);
             this.GpbIdentité.Controls.Add(this.LblVille);
-            this.GpbIdentité.Font = new System.Drawing.Font("Roboto", 11F);
+            this.GpbIdentité.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.GpbIdentité.Location = new System.Drawing.Point(7, 116);
             this.GpbIdentité.Name = "GpbIdentité";
             this.GpbIdentité.Size = new System.Drawing.Size(462, 220);
             this.GpbIdentité.TabIndex = 25;
             this.GpbIdentité.TabStop = false;
             this.GpbIdentité.Text = "Identité";
+            // 
+            // TxtAdresse2
+            // 
+            this.TxtAdresse2.Depth = 0;
+            this.TxtAdresse2.Hint = "";
+            this.TxtAdresse2.Location = new System.Drawing.Point(86, 101);
+            this.TxtAdresse2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TxtAdresse2.Name = "TxtAdresse2";
+            this.TxtAdresse2.PasswordChar = '\0';
+            this.TxtAdresse2.SelectedText = "";
+            this.TxtAdresse2.SelectionLength = 0;
+            this.TxtAdresse2.SelectionStart = 0;
+            this.TxtAdresse2.Size = new System.Drawing.Size(355, 23);
+            this.TxtAdresse2.TabIndex = 16;
+            this.TxtAdresse2.UseSystemPasswordChar = false;
             // 
             // BtnEnregistrer
             // 
@@ -563,42 +599,6 @@
             this.BtnEnregistrer.UseVisualStyleBackColor = true;
             this.BtnEnregistrer.Click += new System.EventHandler(this.BtnEnregistrer_Click);
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.groupBox2);
-            this.groupBox3.Controls.Add(this.CmbAtelier);
-            this.groupBox3.Controls.Add(this.lblAtelier);
-            this.groupBox3.Controls.Add(this.PnlType);
-            this.groupBox3.Font = new System.Drawing.Font("Roboto", 11F);
-            this.groupBox3.Location = new System.Drawing.Point(6, 7);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(686, 384);
-            this.groupBox3.TabIndex = 20;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Complément d\'inscription des Intervenants";
-            // 
-            // PnlNuite
-            // 
-            this.PnlNuite.Location = new System.Drawing.Point(16, 58);
-            this.PnlNuite.Name = "PnlNuite";
-            this.PnlNuite.Size = new System.Drawing.Size(636, 147);
-            this.PnlNuite.TabIndex = 26;
-            // 
-            // TxtAdresse2
-            // 
-            this.TxtAdresse2.Depth = 0;
-            this.TxtAdresse2.Hint = "";
-            this.TxtAdresse2.Location = new System.Drawing.Point(86, 101);
-            this.TxtAdresse2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TxtAdresse2.Name = "TxtAdresse2";
-            this.TxtAdresse2.PasswordChar = '\0';
-            this.TxtAdresse2.SelectedText = "";
-            this.TxtAdresse2.SelectionLength = 0;
-            this.TxtAdresse2.SelectionStart = 0;
-            this.TxtAdresse2.Size = new System.Drawing.Size(355, 23);
-            this.TxtAdresse2.TabIndex = 16;
-            this.TxtAdresse2.UseSystemPasswordChar = false;
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -609,26 +609,26 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.BtnQuitter);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.materialTabControl1);
+            this.Controls.Add(this.TabType);
             this.Controls.Add(this.materialTabSelector1);
             this.Name = "FrmMain";
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Maison des Ligues";
             this.Load += new System.EventHandler(this.FrmMain_Load);
-            this.materialTabControl1.ResumeLayout(false);
+            this.TabType.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.tabPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.GpbIdentité.ResumeLayout(false);
-            this.GpbIdentité.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.GpbIdentité.ResumeLayout(false);
+            this.GpbIdentité.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -637,7 +637,7 @@
         #endregion
 
         private MaterialSkin.Controls.MaterialTabSelector materialTabSelector1;
-        private MaterialSkin.Controls.MaterialTabControl materialTabControl1;
+        private MaterialSkin.Controls.MaterialTabControl TabType;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
@@ -660,9 +660,9 @@
         private MaterialSkin.Controls.MaterialRadioButton RdoNuitéNon;
         private MaterialSkin.Controls.MaterialRadioButton RdoNuitéOui;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField9;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtLicence;
         private MaterialSkin.Controls.MaterialLabel materialLabel13;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField8;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtNaissance;
         private MaterialSkin.Controls.MaterialLabel materialLabel12;
         private MaterialSkin.Controls.MaterialLabel lblAtelier;
         private System.Windows.Forms.Panel PnlType;
