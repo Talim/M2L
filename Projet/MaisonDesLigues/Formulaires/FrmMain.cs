@@ -72,7 +72,7 @@ namespace MaisonDesLigues
             {
                 if (UnControle.GetType().Name == "CheckBox")
                 {
-                    CheckBox UneCheckBox = (CheckBox)UnControle;
+                    MaterialCheckBox UneCheckBox = (MaterialCheckBox)UnControle;
                 }
             }
 
@@ -95,12 +95,11 @@ namespace MaisonDesLigues
 
             foreach (Control UnControle in panel2.Controls)
             {
-                if (UnControle.GetType().Name == "CheckBox" && ((CheckBox)UnControle).Checked)
+                if (UnControle.GetType().Name == "MaterialCheckBox" && ((MaterialCheckBox)UnControle).Checked)
                 {
                     /* Un name de controle est toujours formé come ceci : xxx_Id où id représente l'id dans la table
                      * Donc on splite la chaine et on récupére le deuxième élément qui correspond à l'id de l'élément sélectionné.
-                     * on rajoute cet id dans la collection des id des dates sélectionnées
-                        
+                     * on rajoute cet id dans la collection des id des dates sélectionnées        
                     */
                     IdDatesSelectionnees.Add(System.Convert.ToInt16((UnControle.Name.Split('_'))[1]));
                 }

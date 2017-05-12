@@ -291,7 +291,9 @@ namespace BaseDeDonnees
                 this.ParamCommunsNouveauxParticipants(this._oracleOrder, pNom, pPrenom, pAdresse1, pAdresse2, pCp, pVille, pTel, pMail);
                 this._oracleOrder.Parameters.Add("pDateNaiss", OracleDbType.Date, ParameterDirection.Input).Value = pDateNaissance;
                 this._oracleOrder.Parameters.Add("pLicence", OracleDbType.Int64, ParameterDirection.Input).Value = pNumeroLicence;
-                //UneOracleCommand.Parameters.Add("pLesDates", OracleDbType.Array, ParameterDirection.Input).Value = pDateBenevolat;
+                //this._oracleOrder.Parameters.Add("pLesDates", OracleDbType.Array, ParameterDirection.Input).Value = pDateBenevolat;
+
+
                 OracleParameter pLesDates = new OracleParameter();
                 pLesDates.ParameterName = "pLesDates";
                 pLesDates.OracleDbType = OracleDbType.Int16;

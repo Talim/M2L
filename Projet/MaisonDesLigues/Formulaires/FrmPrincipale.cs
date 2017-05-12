@@ -149,7 +149,8 @@ namespace MaisonDesLigues
 
             foreach (Control UnControle in PanelDispoBenevole.Controls)
             {
-                if (UnControle.GetType().Name == "CheckBox" && ((CheckBox)UnControle).Checked)
+                MessageBox.Show(UnControle.GetType().Name);
+                if (UnControle.GetType().Name == "MaterialCheckBox" && ((MaterialSkin.Controls.MaterialCheckBox)UnControle).Checked)
                 {
                     /* Un name de controle est toujours formé come ceci : xxx_Id où id représente l'id dans la table
                      * Donc on splite la chaine et on récupére le deuxième élément qui correspond à l'id de l'élément sélectionné.
@@ -157,6 +158,7 @@ namespace MaisonDesLigues
                         
                     */
                     IdDatesSelectionnees.Add(System.Convert.ToInt16((UnControle.Name.Split('_'))[1]));
+                    MessageBox.Show(" test : " + System.Convert.ToInt16((UnControle.Name.Split('_'))[1]));
                 }
             }
             UneConnexion.InscrireBenevole(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToDateTime(TxtDateNaissance.Text), NumeroLicence, IdDatesSelectionnees);
