@@ -6,9 +6,8 @@
   {
     $idAtelier = 1;
   }
-  $requete =  $conn->prepare("select NBTS,NBS,NBMS,NBPS from MDL.STATISTIQUE inner join MDL.ATELIER on MDL.STATISTIQUE.id = MDL.ATELIER.idStatistique where MDL.ATELIER.id = ".$idAtelier);
-  $requete->execute();
-  $result = $requete->fetch(PDO::FETCH_ASSOC);
+
+  $result = getLesStats($idAtelier, $conn);
   $nbAvisTs = $result['NBTS'];
   $nbAvisS = $result['NBS'];
   $nbAvisMs = $result['NBMS'];
