@@ -104,7 +104,7 @@
             this.Controls.Add(this.lbl_DateArrive);
             this.Controls.Add(this.dateTime_Arrive);
             this.Name = "Inscription";
-            this.Text = "Form1";
+            this.Text = "Enregistrement";
             this.Load += new System.EventHandler(this.Inscription_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
