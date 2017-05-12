@@ -220,6 +220,23 @@ namespace BaseDeDonnees
             }
         }
 
+
+        public int[] GetStatsValue(int idAtelier)
+        {
+            string sql = "SELECT * FROM atelier inner join statistique on atelier.IDSTATISTIQUE = statistique.ID WHERE statistique.ID = " + idAtelier;
+            this._oracleOrder = new OracleCommand(sql, this._oracleConnection);
+            this._oracleDataAdapter = new OracleDataAdapter();
+            this._oracleDataAdapter.SelectCommand = this._oracleOrder;
+            DataTable lesAvis = new DataTable();
+            this._oracleDataAdapter.Fill(lesAvis);
+
+
+
+            int[] stats = { Convert.ToInt16(lesAvis.Rows[0]["NBTS"]), Convert.ToInt16(lesAvis.Rows[0]["NBS"]), Convert.ToInt16(lesAvis.Rows[0]["NBMS"]), Convert.ToInt16(lesAvis.Rows[0]["NBPS"]) };
+
+            return stats;
+        }
+
         /// <summary>
         /// permet de récupérer le contenu d'une table ou d'une vue. 
         /// </summary>

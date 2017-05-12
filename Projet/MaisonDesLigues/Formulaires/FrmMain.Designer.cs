@@ -48,7 +48,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtLicence = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.BtnQuitter = new MaterialSkin.Controls.MaterialFlatButton();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.TxtMail = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.TxtTel = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.TxtVille = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -63,19 +62,22 @@
             this.LblPrenom = new MaterialSkin.Controls.MaterialLabel();
             this.LblAdresse = new MaterialSkin.Controls.MaterialLabel();
             this.LblNom = new MaterialSkin.Controls.MaterialLabel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.GpbIdentité = new System.Windows.Forms.GroupBox();
             this.TxtAdresse2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.BtnEnregistrer = new MaterialSkin.Controls.MaterialFlatButton();
+            this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.materialFlatButton2 = new MaterialSkin.Controls.MaterialFlatButton();
             this.TabType.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.GpbIdentité.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.GpbIdentité.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialTabSelector1
@@ -326,16 +328,6 @@
             this.BtnQuitter.Text = "=> Quitter l\'application <=";
             this.BtnQuitter.UseVisualStyleBackColor = true;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::MaisonDesLigues.Properties.Resources.logo;
-            this.pictureBox2.Location = new System.Drawing.Point(175, 347);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(294, 127);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox2.TabIndex = 24;
-            this.pictureBox2.TabStop = false;
-            // 
             // TxtMail
             // 
             this.TxtMail.Depth = 0;
@@ -532,17 +524,6 @@
             this.LblNom.TabIndex = 1;
             this.LblNom.Text = "Nom: ";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.pictureBox1.Image = global::MaisonDesLigues.Properties.Resources.mdl_sans_fond_sans_texte;
-            this.pictureBox1.Location = new System.Drawing.Point(1083, 30);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(110, 66);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 17;
-            this.pictureBox1.TabStop = false;
-            // 
             // GpbIdentité
             // 
             this.GpbIdentité.Controls.Add(this.TxtAdresse2);
@@ -588,7 +569,7 @@
             this.BtnEnregistrer.AutoSize = true;
             this.BtnEnregistrer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BtnEnregistrer.Depth = 0;
-            this.BtnEnregistrer.Location = new System.Drawing.Point(18, 345);
+            this.BtnEnregistrer.Location = new System.Drawing.Point(20, 345);
             this.BtnEnregistrer.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.BtnEnregistrer.MouseState = MaterialSkin.MouseState.HOVER;
             this.BtnEnregistrer.Name = "BtnEnregistrer";
@@ -599,11 +580,66 @@
             this.BtnEnregistrer.UseVisualStyleBackColor = true;
             this.BtnEnregistrer.Click += new System.EventHandler(this.BtnEnregistrer_Click);
             // 
+            // materialFlatButton1
+            // 
+            this.materialFlatButton1.AutoSize = true;
+            this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialFlatButton1.Depth = 0;
+            this.materialFlatButton1.Location = new System.Drawing.Point(18, 390);
+            this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialFlatButton1.Name = "materialFlatButton1";
+            this.materialFlatButton1.Primary = false;
+            this.materialFlatButton1.Size = new System.Drawing.Size(141, 36);
+            this.materialFlatButton1.TabIndex = 27;
+            this.materialFlatButton1.Text = "=> Statistiques <=";
+            this.materialFlatButton1.UseVisualStyleBackColor = true;
+            this.materialFlatButton1.Click += new System.EventHandler(this.materialFlatButton1_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::MaisonDesLigues.Properties.Resources.logo;
+            this.pictureBox2.Location = new System.Drawing.Point(175, 347);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(294, 127);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.TabIndex = 24;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            this.pictureBox1.Image = global::MaisonDesLigues.Properties.Resources.mdl_sans_fond_sans_texte;
+            this.pictureBox1.Location = new System.Drawing.Point(1083, 30);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(110, 66);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 17;
+            this.pictureBox1.TabStop = false;
+            // 
+            // materialFlatButton2
+            // 
+            this.materialFlatButton2.AutoSize = true;
+            this.materialFlatButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialFlatButton2.Depth = 0;
+            this.materialFlatButton2.Location = new System.Drawing.Point(39, 435);
+            this.materialFlatButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialFlatButton2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialFlatButton2.Name = "materialFlatButton2";
+            this.materialFlatButton2.Primary = false;
+            this.materialFlatButton2.Size = new System.Drawing.Size(100, 36);
+            this.materialFlatButton2.TabIndex = 28;
+            this.materialFlatButton2.Text = "=> Ajouts <=";
+            this.materialFlatButton2.UseVisualStyleBackColor = true;
+            this.materialFlatButton2.Click += new System.EventHandler(this.materialFlatButton2_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1197, 544);
+            this.Controls.Add(this.materialFlatButton2);
+            this.Controls.Add(this.materialFlatButton1);
             this.Controls.Add(this.BtnEnregistrer);
             this.Controls.Add(this.GpbIdentité);
             this.Controls.Add(this.pictureBox2);
@@ -615,6 +651,7 @@
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Maison des Ligues";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.TabType.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -625,10 +662,10 @@
             this.tabPage3.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.GpbIdentité.ResumeLayout(false);
             this.GpbIdentité.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -675,5 +712,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Panel PnlNuite;
         private MaterialSkin.Controls.MaterialSingleLineTextField TxtAdresse2;
+        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
+        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton2;
     }
 }

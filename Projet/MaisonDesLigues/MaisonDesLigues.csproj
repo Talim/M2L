@@ -113,6 +113,12 @@
     <Compile Include="Formulaires\FrmAdd.designer.cs">
       <DependentUpon>FrmAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formulaires\FrmStats.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulaires\FrmStats.Designer.cs">
+      <DependentUpon>FrmStats.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formulaires\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +145,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Formulaires\FrmAdd.resx">
       <DependentUpon>FrmAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulaires\FrmStats.resx">
+      <DependentUpon>FrmStats.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formulaires\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>

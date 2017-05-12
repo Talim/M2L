@@ -4,7 +4,9 @@ using BaseDeDonnees;
 using Oracle.ManagedDataAccess.Client;
 using MaterialSkin.Controls;
 using MaterialSkin;
+using System.Drawing;
 using MaisonDesLigues.Utilitaires;
+using Shadow;
 
 namespace MaisonDesLigues
 {
@@ -15,6 +17,7 @@ namespace MaisonDesLigues
         private Bdd _connection;
         private DataTable _atelierData;
         private DataTable _vacationData;
+        private Dropshadow _ombre;
 
         /// <summary>
         /// constructeur
@@ -30,13 +33,22 @@ namespace MaisonDesLigues
 
         private void FrmAdd_Load(object sender, EventArgs e)
         {
-            try
+
+
+            if (!DesignMode)
             {
-                this._connection = ((FrmLogin)Owner).connection;
-            }catch(Exception ex)
-            {
-                throw new Exception(ex.Message);
+                _ombre = new Dropshadow(this)
+                {
+                    ShadowBlur = 10,
+                    ShadowSpread = -4,
+                    ShadowColor = Color.FromArgb(33, 33, 33)
+                };
+                _ombre.RefreshShadow();
+                _ombre.Refresh();
             }
+
+            this._connection = ((FrmMain)Owner).UneConnexion;
+
 
             this.GetAteliers();
             this.GetVacations();

@@ -22,7 +22,7 @@ namespace MaisonDesLigues
         private readonly MaterialSkinManager materialSkinManager;
 
         private Dropshadow _ombre;
-        private Bdd UneConnexion;
+        internal Bdd UneConnexion;
         private String IdStatutSelectionne = "";
 
         public FrmMain()
@@ -198,6 +198,21 @@ namespace MaisonDesLigues
             {
                 PnlNuite.Visible = false;
             }
+        }
+
+        private void materialFlatButton1_Click(object sender, EventArgs e)
+        {
+            (new FrmStats()).Show(this);
+        }
+
+        private void materialFlatButton2_Click(object sender, EventArgs e)
+        {
+            (new FrmAdd()).Show(this);
+        }
+
+        private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }
